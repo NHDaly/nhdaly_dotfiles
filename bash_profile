@@ -1,3 +1,4 @@
+#!/bin/bash
 
 WELCOME_STRINGS={"Hi, Nathan. Welcome back. We missed you.","... Don't leave us again. "}
 echo "Hi, Nathan. Welcome back. We missed you."
