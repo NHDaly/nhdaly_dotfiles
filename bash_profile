@@ -1,7 +1,7 @@
 
 WELCOME_STRINGS={"Hi, Nathan. Welcome back. We missed you.","... Don't leave us again. "}
 echo "Hi, Nathan. Welcome back. We missed you."
-echo "... Don't ever leave us again. "
+echo "... Don't ever leave us again."
 
 #Bash History
 # ignore duplicated and empty history entries
