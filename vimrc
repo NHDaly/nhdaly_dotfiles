@@ -1,31 +1,47 @@
 ""-------- MY ADDITIONS ----------""
 
+" Allow you to save a file that you accidentally opened
+" without sudo privelage
 cmap w!! %!sudo tee > /dev/null %
 
+" Because who needs vi?
+set nocompatible
+
+" set tab stuff 
 set tabstop=4
 set shiftwidth=4
+set softtabstop=4
 set expandtab
-set backspace=indent,eol,start
 set autoindent
+set smartindent
 set copyindent
-set shiftwidth=4
-set shiftround
-set showmatch
-set smartcase
 set smarttab
+
+set shiftround
+set linebreak "Break lines at word boundaries instead of mid-word
+
+set backspace=indent,eol,start "Allow you to backspace over them
+set showmatch "Highlight matching parens
+
+"Don't ignore case for caps
+set smartcase "unused unless set ignorecase
+
 set pastetoggle=<C-Y>
+set number "show line numbers. ... duh?
+set incsearch "jump to match while typing search
 
-set number
+" Hides the current buffer when switching rather than closing
+set hidden "Allow leaving unsaved buffers to switch windows
 
-set incsearch
 
-"nnoremap ; :
+"nnoremap ; : "use ; to mean : so no shift is required
 
+" Set a manual backup directory
 "set backup
 "set backupdir=~/.vim/backup
 "set directory=~/.vim/tmp
 
-set tags=./tags;
+set tags=./tags "Where to look for the tags
 
 "set to use search for tags instead of default
 noremap <c-]> g<c-]>
@@ -60,7 +76,7 @@ else
   set backup		" keep a backup file
 endif
 set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
+set ruler		" show the cursor position in bottom right all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
