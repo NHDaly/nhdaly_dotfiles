@@ -1,6 +1,8 @@
 This repo contains one file:
     1. bash_profile -- the actual profile file
+    2. vimrc -- the actual profile file
 
 To install, make a link to this file in your home directory:
     $ ln bash_profile ~/.bash_profile
+    $ ln vimrc ~/.vimrc
 
