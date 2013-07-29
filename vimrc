@@ -23,8 +23,9 @@ set linebreak "Break lines at word boundaries instead of mid-word
 set backspace=indent,eol,start "Allow you to backspace over them
 set showmatch "Highlight matching parens
 
-"Don't ignore case for caps
+" Don't ignore case for caps
 set smartcase "unused unless set ignorecase
+set ignorecase
 
 set pastetoggle=<C-Y>
 set number "show line numbers. ... duh?
@@ -33,6 +34,11 @@ set incsearch "jump to match while typing search
 " Hides the current buffer when switching rather than closing
 set hidden "Allow leaving unsaved buffers to switch windows
 
+"Set options for formatting text (with autoformat command [=])
+set formatoptions=tcqn "autowrap, maintain comments, format comments, lists
+
+set splitbelow "Split windows below the current window.
+set splitright "VSplit windows to the right of the current window.
 
 "nnoremap ; : "use ; to mean : so no shift is required
 
@@ -46,6 +52,32 @@ set tags=./tags "Where to look for the tags
 "set to use search for tags instead of default
 noremap <c-]> g<c-]>
 noremap <c-LeftMouse> <LeftMouse>g<c-]>
+
+" No more stretching for navigating files  
+" Turn off 'h' and shift everything down one
+noremap h ;
+noremap j h
+noremap k gj
+noremap l gk
+noremap ; l
+
+"Fix up/down for wrapped lines:
+" noremap  <buffer> <silent> <Up>   gk
+" noremap  <buffer> <silent> <Down> gj
+noremap  <buffer> <silent> <Home> g<Home>
+noremap  <buffer> <silent> <End>  g<End>
+" inoremap <buffer> <silent> <Up>   <C-o>gk
+" inoremap <buffer> <silent> <Down> <C-o>gj
+inoremap <buffer> <silent> <Home> <C-o>g<Home>
+inoremap <buffer> <silent> <End>  <C-o>g<End>
+
+
+
+"-- Spelling Corrections --"
+iab teh the
+iab Teh The
+
+
 
 " An example for a vimrc file.
 "
