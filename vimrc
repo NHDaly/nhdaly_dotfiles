@@ -4,8 +4,14 @@
 " without sudo privelage
 cmap w!! %!sudo tee > /dev/null %
 
+" Change leader key to ',' from '\'
+" let mapleader = "," 
+
 " Because who needs vi?
 set nocompatible
+
+" apparently this prevents a security hole?
+set modelines=0
 
 " set tab stuff 
 set tabstop=4
@@ -22,15 +28,9 @@ set shiftround
 "set nolinebreak "Break lines at word boundaries instead of mid-word
 
 set backspace=indent,eol,start "Allow you to backspace over them
-set showmatch "Highlight matching parens
-
-" Don't ignore case for caps
-set smartcase "unused unless set ignorecase
-set ignorecase
 
 set pastetoggle=<C-Y>
 set number "show line numbers. ... duh?
-set incsearch "jump to match while typing search
 
 " Hides the current buffer when switching rather than closing
 set hidden "Allow leaving unsaved buffers to switch windows
@@ -40,6 +40,8 @@ set formatoptions=tcqn "autowrap, maintain comments, format comments, lists
 
 set splitbelow "Split windows below the current window.
 set splitright "VSplit windows to the right of the current window.
+
+set undofile "Create undo file to store undos even after close/reopen
 
 "nnoremap ; : "use ; to mean : so no shift is required
 
@@ -53,6 +55,26 @@ set tags=./tags "Where to look for the tags
 "set to use search for tags instead of default
 noremap <c-]> g<c-]>
 noremap <c-LeftMouse> <LeftMouse>g<c-]>
+
+"---- Search settings ------"
+"Set vim to use Perl-like regexes instead of Vim-style
+nnoremap / /\v
+vnoremap / /\v
+" Don't ignore case for caps
+set smartcase "unused unless set ignorecase
+set ignorecase
+set gdefault "replace applies globally across all lines
+set incsearch "jump to match while typing search
+set showmatch "Highlight matching parens
+set hlsearch
+"shortcut to clear search highlighting
+nnoremap <leader><space> :noh<cr>
+"Tab to match parentheses
+nnoremap <S-tab> %
+vnoremap <S-tab> %
+"nnoremap <c-i> <tab>
+"vnoremap <c-i> <tab>
+
 
 " No more stretching for navigating files  
 " Turn off 'h' and shift everything down one
@@ -111,7 +133,6 @@ endif
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position in bottom right all the time
 set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
@@ -132,7 +153,6 @@ endif
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
   syntax on
-  set hlsearch
 endif
 
 " Only do this part when compiled with support for autocommands.
