@@ -41,7 +41,9 @@ set formatoptions=tcqn "autowrap, maintain comments, format comments, lists
 set splitbelow "Split windows below the current window.
 set splitright "VSplit windows to the right of the current window.
 
-set undofile "Create undo file to store undos even after close/reopen
+if version >= 703
+  set undofile "Create undo file to store undos even after close/reopen
+endif
 
 "nnoremap ; : "use ; to mean : so no shift is required
 
