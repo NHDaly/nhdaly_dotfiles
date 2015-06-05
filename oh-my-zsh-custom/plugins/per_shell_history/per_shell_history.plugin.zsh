@@ -1,0 +1,1 @@
+/usr/local/google/home/nhdaly/scripts/per_shell_history.zsh
