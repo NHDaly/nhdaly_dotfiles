@@ -1,0 +1,151 @@
+
+# For some reason I have a .profile file, as well.. so include that, too.
+source ~/.profile
+source ~/.bashrc
+
+#Bash Prompt
+#export PROMPT_COMMAND='PS1="$(python ~/rc_profiles/short-pwd.py)"'
+
+#Bash history
+# ignore duplicated and empty history entries
+export HISTCONTROL=ignoreboth
+# merge the history of multiple open sessions (e.g. tabs or windows)
+shopt -s histappend
+# After each command, save and reload history
+#export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+# increase number of lines saved in history
+export HISTFILESIZE=5000
+export HISTSIZE=5000
+
+#ALIASES
+alias lisp=sbcl
+#alias go=open
+alias ll="ls -al"
+alias ..="cd .."
+alias gpsh="git push"
+alias gpl="git pull"
+alias gpll="git pull"
+alias gsa="git status"
+alias gcm="git commit"
+alias gamd="git commit --amend"
+
+# the old computer:
+#export awswulu="ubuntu@ec2-54-226-137-31.compute-1.amazonaws.com"
+#the new copy:
+export awswulu="ubuntu@ec2-54-211-125-250.compute-1.amazonaws.com"
+# the old backup:
+#export awswulu="ubuntu@ec2-50-16-82-181.compute-1.amazonaws.com"
+export umssh="nathdaly@ssh.itd.umich.edu"
+export umftp="nathdaly@sftp.itd.umich.edu"
+export umsftp=$umftp
+export novissh="server@75.39.13.254"
+export dalyssh="daly@75.39.13.254"
+
+#ENVIRO VARIABLES
+#Go
+export GOPATH=/Users/Daly/Documents/School/EECS/Labs/Go
+export PATH=$PATH:$GOPATH/bin
+
+
+# Include Paths
+CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/usr/include:~/include
+export CPLUS_INCLUDE_PATH
+
+C_INCLUDE_PATH=$C_INCLUDE_PATH:/usr/include:~/include
+export C_INCLUDE_PATH
+
+CMAKE_C_COMPILER=$CMAKE_C_COMPILER:/usr/bin/llvm-gcc-4.2
+export CMAKE_C_COMPILER
+
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/Users/Daly/bin/opencv-2.4.7-build/unix-install
+
+# OS SDK PATHS
+IPHONE_SDK=/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk
+IPHONESIM_SDK=Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk
+#MACOSX_SDK=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk
+
+export IPHONE_SDK
+export IPHONESIM_SDK
+#export MACOS_SDK
+
+C_INCLUDE_PATH=$IPHONE_SDK/usr/include:$IPHONESIM_SDK/usr/include:$C_INCLUDE_PATH:$HOME/local/include
+CPLUS_INCLUDE_PATH=$C_INCLUDE_PATH:$CPLUS_INCLUDE_PATH
+
+export C_INCLUDE_PATH
+export CPLUS_INCLUDE_PATH
+
+
+
+
+
+PATH=/opt/subversion/bin/:/Users/Daly/bin:$PATH:/Developer/usr/bin:/Applications/Octave.app/Contents/Resources/bin 
+export PATH
+
+# /Users/Daly/bin/clang+llvm-3.1-x86_64-apple-darwin11/bin:/Users/Daly/Documents/School/EECS/Downloads/LLVM/build/Debug+Asserts/bin:
+
+# Setting PATH for Python 3.2
+# The orginal version is saved in .bash_profile.pysave
+#PATH="/Library/Frameworks/Python.framework/Versions/3.2/bin:${PATH}"
+#export PATH
+
+##
+# Your previous /Users/Daly/.bash_profile file was backed up as /Users/Daly/.bash_profile.macports-saved_2012-01-02_at_20:49:06
+##
+
+# MacPorts Installer addition on 2012-01-02_at_20:49:06: adding an appropriate PATH variable for use with MacPorts.
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+
+# Setting PATH for Python 2.7
+# The orginal version is saved in .bash_profile.pysave
+#PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
+#export PATH
+
+# Setting PATH for Python 2.7
+# The orginal version is saved in .bash_profile.pysave
+#PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
+#export PATH
+
+##
+# Your previous /Users/Daly/.bash_profile file was backed up as /Users/Daly/.bash_profile.macports-saved_2012-09-26_at_17:18:52
+##
+
+# MacPorts Installer addition on 2012-09-26_at_17:18:52: adding an appropriate PATH variable for use with MacPorts.
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+
+##
+# Your previous /Users/Daly/.bash_profile file was backed up as /Users/Daly/.bash_profile.macports-saved_2013-02-12_at_19:57:41
+##
+
+# MacPorts Installer addition on 2013-02-12_at_19:57:41: adding an appropriate PATH variable for use with MacPorts.
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
+
+
+
+# ADD apple's llvm compilers to path
+#PATH=/Developer/Platforms/iPhoneOS.platform/Developer/usr/llvm-gcc-4.2/bin:$PATH
+#export PATH
+
+
+
+##
+# Your previous /Users/Daly/.bash_profile file was backed up as /Users/Daly/.bash_profile.macports-saved_2014-01-09_at_13:11:50
+##
+
+# MacPorts Installer addition on 2014-01-09_at_13:11:50: adding an appropriate PATH variable for use with MacPorts.
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+
+export PYTHONSTARTUP=~/.pystartup
+export PYTHONPATH=$PYTHONPATH:~/lib
+
