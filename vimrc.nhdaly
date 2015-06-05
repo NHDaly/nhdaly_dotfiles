@@ -1,6 +1,47 @@
 " Because who needs vi?
 set nocompatible
 
+""=========== MY PLUGINS ===========""
+" --------- VUNDLE ---------------- "
+" Vundle Plugins -- https://github.com/gmarik/Vundle.vim
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" ------- Put Plugins Here -----------------------"
+
+" For 'better c++ vim highlighting'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+let g:cpp_class_scope_highlight = 1
+let g:cpp_experimental_template_highlight = 1
+hi cppSTLnamespace ctermfg=10
+
+" For 'better c++ vim highlighting'
+Plugin 'wesQ3/vim-windowswap'
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
 ""-------- MY ADDITIONS ----------""
 
 "Set options for formatting text (with autoformat command [=])
@@ -9,6 +50,13 @@ set formatoptions=tcqn "autowrap, maintain comments, format comments, lists
 "if version >= 703
 "  set undofile "Create undo file to store undos even after close/reopen
 "endif
+
+" F4 will switch between .cc file and .h
+" TODO(nhdaly): Add .cpp file support
+map <F4> :e %:p:s,.h$,.X123X,:s,.cc$,.h,:s,.X123X$,.cc,<CR>
+
+" Makes %%/ expand to file's parent directory.
+cabbr <expr> %% expand("%:p:h")
 
 
 let mapleader = ","
@@ -225,4 +273,15 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
+" -------- iTerm Colors --------------
+hi Statement ctermfg=3
+hi cCustomClass ctermfg=7
+hi Function ctermfg=7
+hi LineNr ctermfg=3
+" Cursor Line number
+hi CursorLineNr ctermfg=9
+set cursorline
+highlight CursorLine guibg=none guifg=bold gui=none term=none cterm=none
+" Selection
+hi Visual term=reverse ctermfg=0
 
