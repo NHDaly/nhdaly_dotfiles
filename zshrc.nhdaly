@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=~/oh-my-zsh
+export ZSH=~/.oh-my-zsh
 export ZSH_CUSTOM=~/dotfiles/nhdaly/oh-my-zsh-custom
 
 # ===== iTerm =======
