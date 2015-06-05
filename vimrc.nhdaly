@@ -1,22 +1,39 @@
+" Because who needs vi?
+set nocompatible
+
 ""-------- MY ADDITIONS ----------""
+
+"Set options for formatting text (with autoformat command [=])
+set formatoptions=tcqn "autowrap, maintain comments, format comments, lists
+
+"if version >= 703
+"  set undofile "Create undo file to store undos even after close/reopen
+"endif
+
+
+let mapleader = ","
+
+" Don't use Modelines unless you really need them, and then turn it on manually
+" per session. See google search for 'vim modeline vulnerability' or
+" http://www.techrepublic.com/blog/it-security/turn-off-modeline-support-in-vim/
+set modelines=0
+
+" Remove trailing whitespace from a line
+"command RemoveSpace s/\s\+$//
 
 " Allow you to save a file that you accidentally opened
 " without sudo privelage
 cmap w!! %!sudo tee > /dev/null %
 
-" Change leader key to ',' from '\'
-" let mapleader = "," 
 
-" Because who needs vi?
-set nocompatible
+" Set (weird) hotkeys for horizontal scrolling.
+map <A-V> <ScrollWheelLeft>
 
-" apparently this prevents a security hole?
-set modelines=0
 
 " set tab stuff 
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 set autoindent
 set smartindent
@@ -28,22 +45,30 @@ set shiftround
 "set nolinebreak "Break lines at word boundaries instead of mid-word
 
 set backspace=indent,eol,start "Allow you to backspace over them
+set showmatch "Highlight matching parens
+
+" Hides the current buffer when switching rather than closing.
+" Note -- this seems to be enabled even without this line...
+set hidden "Allow leaving unsaved buffers to switch windows.
+
+"---- Search settings ------"
+"Set vim to use Perl-like regexes instead of Vim-style
+"nnoremap / /\v
+"vnoremap / /\v
+" Don't ignore case for caps
+set smartcase "unused unless set ignorecase
+set ignorecase
+set incsearch "jump to match while typing search
+set hlsearch
+"shortcut to clear search highlighting
+nnoremap <leader><space> :noh<cr>
+"Tab to match parentheses
+nnoremap <S-tab> %
+vnoremap <S-tab> %
 
 set pastetoggle=<C-Y>
 set number "show line numbers. ... duh?
-
-" Hides the current buffer when switching rather than closing
-set hidden "Allow leaving unsaved buffers to switch windows
-
-"Set options for formatting text (with autoformat command [=])
-set formatoptions=tcqn "autowrap, maintain comments, format comments, lists
-
-set splitbelow "Split windows below the current window.
 set splitright "VSplit windows to the right of the current window.
-
-if version >= 703
-  set undofile "Create undo file to store undos even after close/reopen
-endif
 
 "nnoremap ; : "use ; to mean : so no shift is required
 
@@ -55,36 +80,13 @@ endif
 set tags=./tags "Where to look for the tags
 
 "set to use search for tags instead of default
-noremap <c-]> g<c-]>
-noremap <c-LeftMouse> <LeftMouse>g<c-]>
-
-"---- Search settings ------"
-"Set vim to use Perl-like regexes instead of Vim-style
-nnoremap / /\v
-vnoremap / /\v
-" Don't ignore case for caps
-set smartcase "unused unless set ignorecase
-set ignorecase
-set gdefault "replace applies globally across all lines
-set incsearch "jump to match while typing search
-set showmatch "Highlight matching parens
-set hlsearch
-"shortcut to clear search highlighting
-nnoremap <leader><space> :noh<cr>
-"Tab to match parentheses
-nnoremap <S-tab> %
-vnoremap <S-tab> %
-"nnoremap <c-i> <tab>
-"vnoremap <c-i> <tab>
+"noremap <c-]> g<c-]>
+"noremap <c-LeftMouse> <LeftMouse>g<c-]>
 
 
-" No more stretching for navigating files  
-" Turn off 'h' and shift everything down one
-noremap h ;
-noremap j h
-noremap k gj
-noremap l gk
-noremap ; l
+"Fix j and k for wrapped lines:
+noremap j gj
+noremap k gk
 
 "Fix up/down for wrapped lines:
 " noremap  <buffer> <silent> <Up>   gk
@@ -96,13 +98,25 @@ noremap  <buffer> <silent> <End>  g<End>
 inoremap <buffer> <silent> <Home> <C-o>g<Home>
 inoremap <buffer> <silent> <End>  <C-o>g<End>
 
+" Makes K split lines (the opposite of J).
+nmap K i<cr><esc>k$
 
+" Makes s save
+nmap s :w <enter>
 
-"-- Spelling Corrections --"
-iab teh the
-iab Teh The
+"" Powerline
+"python from powerline.vim import setup as powerline_setup
+"python powerline_setup()
+"python del powerline_setup
+"
+"let g:powerline_config_overrides 
 
+" Let bclose close a buffer even if it's in multiple windows
+let bclose_multiple = 1
 
+source ~/.vim/plugin/bclose.vim 
+
+" ============== END MY ADDITIONS ==================
 
 " An example for a vimrc file.
 "
@@ -135,6 +149,7 @@ endif
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position in bottom right all the time
 set showcmd		" display incomplete commands
+set incsearch		" do incremental searching
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
@@ -149,12 +164,22 @@ inoremap <C-U> <C-G>u<C-U>
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
   set mouse=a
+  " fix mouse-drag to work in tmux/screen
+  if &term =~ '^screen' || &term =~ 'xterm'
+      " tmux knows the extended mouse mode
+      if has("mouse_sgr")
+        set ttymouse=sgr
+      else
+        set ttymouse=xterm2
+      end
+  endif
 endif
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
   syntax on
+  set hlsearch
 endif
 
 " Only do this part when compiled with support for autocommands.
@@ -199,4 +224,5 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 		  \ | wincmd p | diffthis
 endif
+
 
