@@ -1,0 +1,36 @@
+
+# Stop the crashing on suspend!
+unbind C-z
+
+# quick pane cycling
+unbind ^A
+bind ^A select-pane -t :.+
+
+# add mouse scrolling
+setw -g mode-mouse on
+
+# Allow mouse to manage panes
+set -g mouse-select-pane on
+set -g mouse-select-window on
+set -g mouse-resize-pane on
+
+
+# TURN OFF ctrl-D to exit *FOR BASH* (press 3 times to really mean it)
+set-environment -g 'IGNOREEOF' 2
+
+# To turn off ctrl-D to exit *FOR ZSH*, put this in .zshrc:
+#   setopt ignoreeof
+
+
+set-option -g default-shell /bin/zsh
+
+## Join windows: <prefix> s, <prefix> j
+bind-key j command-prompt -p "join pane from:"  "join-pane -s '%%'"
+bind-key s command-prompt -p "send pane to:"  "join-pane -t '%%'"
+
+# Add pretty powerline status
+run-shell "powerline-daemon -q"
+source "/usr/local/lib/python2.7/dist-packages/powerline/bindings/tmux/powerline.conf"
+
+set-option -g history-limit 5000
+
