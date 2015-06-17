@@ -2,7 +2,7 @@
 set nocompatible
 
 ""=========== MY PLUGINS ===========""
-" --------- VUNDLE ---------------- "
+"" --------- VUNDLE ---------------- "
 " Vundle Plugins -- https://github.com/gmarik/Vundle.vim
 filetype off                  " required
 
@@ -24,6 +24,10 @@ let g:cpp_experimental_template_highlight = 1
 hi cppSTLnamespace ctermfg=10
 
 " For 'better c++ vim highlighting'
+let g:windowswap_map_keys = 0 "prevent default bindings
+"nnoremap <silent> <leader>yw :call WindowSwap#MarkWindowSwap()<CR>
+"nnoremap <silent> <leader>pw :call WindowSwap#DoWindowSwap()<CR>
+nnoremap <silent> <leader>Ww :call WindowSwap#EasyWindowSwap()<CR>
 Plugin 'wesQ3/vim-windowswap'
 
 
@@ -42,7 +46,22 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-""-------- MY ADDITIONS ----------""
+"" --------- VimBall ---------------"
+
+" CamelCaseMotion: http://www.vim.org/scripts/script.php?script_id=1905
+" Use <shift>key instead of ,key.
+map W <Plug>CamelCaseMotion_w
+map B <Plug>CamelCaseMotion_b
+map E <Plug>CamelCaseMotion_e
+
+" Match default behavior and don't include trailing whitespace on cW/iW.
+nmap cW cE
+" Must define the default mappings first in order to change them.
+runtime plugin/camelcasemotion.vim
+omap iW iE
+xmap iW iE
+
+""======== MY ADDITIONS ==========""
 
 "Set options for formatting text (with autoformat command [=])
 set formatoptions=tcqn "autowrap, maintain comments, format comments, lists
@@ -78,7 +97,7 @@ cmap w!! %!sudo tee > /dev/null %
 map <A-V> <ScrollWheelLeft>
 
 
-" set tab stuff 
+" set tab stuff
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
