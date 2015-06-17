@@ -28,9 +28,12 @@ set-option -g default-shell /bin/zsh
 bind-key j command-prompt -p "join pane from:"  "join-pane -s '%%'"
 bind-key s command-prompt -p "send pane to:"  "join-pane -t '%%'"
 
+
+set-option -g history-limit 5000
+
+
+# Make sure this is last, because Powerline might not be installed.
 # Add pretty powerline status
 run-shell "powerline-daemon -q"
 source "/usr/local/lib/python2.7/dist-packages/powerline/bindings/tmux/powerline.conf"
-
-set-option -g history-limit 5000
 
