@@ -1,6 +1,8 @@
 " Because who needs vi?
 set nocompatible
 
+let mapleader = ","
+
 ""=========== MY PLUGINS ===========""
 "" --------- VUNDLE ---------------- "
 " Vundle Plugins -- https://github.com/gmarik/Vundle.vim
@@ -27,7 +29,7 @@ hi cppSTLnamespace ctermfg=10
 let g:windowswap_map_keys = 0 "prevent default bindings
 "nnoremap <silent> <leader>yw :call WindowSwap#MarkWindowSwap()<CR>
 "nnoremap <silent> <leader>pw :call WindowSwap#DoWindowSwap()<CR>
-nnoremap <silent> <leader>Ww :call WindowSwap#EasyWindowSwap()<CR>
+nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
 Plugin 'wesQ3/vim-windowswap'
 
 
@@ -77,8 +79,6 @@ map <F4> :e %:p:s,.h$,.X123X,:s,.cc$,.h,:s,.X123X$,.cc,<CR>
 " Makes %%/ expand to file's parent directory.
 cabbr <expr> %% expand("%:p:h")
 
-
-let mapleader = ","
 
 " Don't use Modelines unless you really need them, and then turn it on manually
 " per session. See google search for 'vim modeline vulnerability' or

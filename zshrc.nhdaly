@@ -69,14 +69,6 @@ plugins=(git)
 # User configuration
 
 export MANPATH="/usr/local/man:$MANPATH"
-export PATH=$PATH:~/bin
-
-CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:~/include
-export CPLUS_INCLUDE_PATH
-
-C_INCLUDE_PATH=$C_INCLUDE_PATH:~/include
-export C_INCLUDE_PATH
-
 
 
 # ======= THEME ======================================================
@@ -133,7 +125,7 @@ alias gga="gitg --all &>/dev/null &"
 alias ggl="gitg --local &>/dev/null &"
 
 
-alias cdf="~/bin/cdiffer_sxs.sh"
+alias cdf="~/dotfiles/nhdaly/scripts/cdiffer_sxs.sh"
 
 # write-through history
 setopt incappendhistory
