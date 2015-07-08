@@ -132,3 +132,5 @@ setopt incappendhistory
 unsetopt sharehistory
 #export HISTFILE=~/tmp_history_file.history
 
+export PATH=$PATH:~/dotfiles/nhdaly/scripts
+
