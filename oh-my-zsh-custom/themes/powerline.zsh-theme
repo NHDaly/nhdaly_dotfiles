@@ -18,10 +18,11 @@ elif [ "$POWERLINE_RIGHT_A" = "date" ]; then
   POWERLINE_RIGHT_A="$POWERLINE_DATE_FORMAT"
 fi
 
+
 if [ "$POWERLINE_HIDE_USER_NAME" = "" ] && [ "$POWERLINE_HIDE_HOST_NAME" = "" ]; then
     POWERLINE_USER_NAME="%n@%m"
 elif [ "$POWERLINE_HIDE_USER_NAME" != "" ] && [ "$POWERLINE_HIDE_HOST_NAME" = "" ]; then
-    POWERLINE_USER_NAME="@%m"
+    POWERLINE_USER_NAME="$HOST_SYMBOL "
 elif [ "$POWERLINE_HIDE_USER_NAME" = "" ] && [ "$POWERLINE_HIDE_HOST_NAME" != "" ]; then
     POWERLINE_USER_NAME="%n"
 else
@@ -117,7 +118,7 @@ if [ "$POWERLINE_DETECT_SSH" != "" ]; then
     POWERLINE_SEC1_TXT=%F{white}
   fi
 fi
-PROMPT="$POWERLINE_SEC1_BG$POWERLINE_SEC1_TXT%D{%H:%M:%S} %k%f$POWERLINE_SEC1_FG%K{blue}"$'\ue0b0'"%k%f%F{white}%K{blue} "$POWERLINE_CURRENT_PATH"%F{blue}"$POWERLINE_GIT_INFO_LEFT" %k"$'\ue0b0'"%f "
+PROMPT="$POWERLINE_USER_NAME$POWERLINE_SEC1_BG$POWERLINE_SEC1_TXT%D{%H:%M:%S} %k%f$POWERLINE_SEC1_FG%K{blue}"$'\ue0b0'"%k%f%F{white}%K{blue} "$POWERLINE_CURRENT_PATH"%F{blue}"$POWERLINE_GIT_INFO_LEFT" %k"$'\ue0b0'"%f "
 
 if [ "$POWERLINE_NO_BLANK_LINE" = "" ]; then
     PROMPT="
