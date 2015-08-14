@@ -64,9 +64,14 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git, per_shell_history)
-plugins=(git)
+plugins=(git, pip, vi-mode) #, vi-mode-nhdaly)
 
 # User configuration
+
+# ==== vi-mode settings ====
+bindkey "^R" history-incremental-search-backward
+bindkey -M vicmd "s" vi-cmd-mode # Turn off subsitute (make it a noop).
+# ==== end vi-mode settings ====
 
 export MANPATH="/usr/local/man:$MANPATH"
 
@@ -94,6 +99,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 export EDITOR='vim'
+
+
+# Use vim-style key-bindings for the zsh commandline prompt!
+bindkey -v
+
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
