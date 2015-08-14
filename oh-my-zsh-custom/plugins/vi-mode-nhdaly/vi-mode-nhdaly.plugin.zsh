@@ -33,8 +33,8 @@ start_search() {
   #BUFFER=$original_buffer
 }
 end_search() {
-  zle .end-of-history
-  zle .vi-history-search-backward "$word"
+  #zle .end-of-history
+  #zle .vi-history-search-backward "$word"
   zle redisplay
   word=''
 }
@@ -68,32 +68,34 @@ search_buffer() {
   #zle get-line # put line back so that if we ctrl-c instead of typing a char it goes back.
   read -k key
   #zle push-line # put line back so that if we ctrl-c it goes back.
-    case $key in
-      '')  end_search ; return ;;  # enter
-      '')  delete_word || return ;;  # delete
-      '')  quit_search ; echo '^C!' ; return ;;  # delete
-      *)     word=$word$key
-    esac
+  case $key in
+    '')  end_search ; return ;;  # enter
+    '')  delete_word || return ;;  # delete
+    '')  quit_search ; return ;;  # ctrl-c
+    '')  quit_search ; return ;;  # ctrl-c (if read -k is interrupted)
+    #'OD') move_left ;;
+    *)     word=$word$key
+  esac
 
-    zle .end-of-history
-    clear_buffer
-    BUFFER=$original_buffer
-    zle .vi-history-search-backward "$word"
-    zle redisplay
+  zle .end-of-history
+  clear_buffer
+  BUFFER=$original_buffer
+  zle .vi-history-search-backward "$word"
+  zle redisplay
 
-    zle -R '? '$word
+  zle -R '? '$word
 
-    #zle infer-next-history
-    #zle push-line
-    #zle get-line
-    #zle clear-screen
-    #zle redisplay
-    #zle reset-prompt
-    #zle recursive-edit
-    #zle redisplay
-    #zle accept-and-infer-next-history
-    #zle .history-incremental-search-backward "$word"
-  done
+  #zle infer-next-history
+  #zle push-line
+  #zle get-line
+  #zle clear-screen
+  #zle redisplay
+  #zle reset-prompt
+  #zle recursive-edit
+  #zle redisplay
+  #zle accept-and-infer-next-history
+  #zle .history-incremental-search-backward "$word"
+done
 }
 
 _key()
@@ -143,3 +145,8 @@ get_key() {
 
   printf -v "${1:-key}" "%s" "$key"
 }
+
+ord() {
+  LC_CTYPE=C printf '%d' "$1"
+}
+
