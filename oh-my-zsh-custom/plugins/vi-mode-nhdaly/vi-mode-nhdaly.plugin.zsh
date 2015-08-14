@@ -1,87 +1,88 @@
-#function vi_mode_nhdaly_prompt_info() {
-#  zle -N end-of-line
-#  echo "NHDALY"
-#  vi_mode_prompt_info
-#}
 
-#function zle-isearch-update() {
-#  echo "hi"
-#}
-#zle -N zle-isearch-update
-
-SEARCHING=false
-word=
-
-zle -A self-insert save-self-insert
-
-self_insert_exits() {
-  zle accept-line
-}
-self_insert_searches() {
-  zle vi-history-search-backward
+function move_to_end_of_buffer() {
+  last_cursor=$CURSOR
+  zle .vi-forward-blank-word-end
+  while [[ $CURSOR != $last_cursor ]] ; do
+    last_cursor=$CURSOR
+    zle .vi-forward-blank-word-end
+  done
 }
 
-line_init_exits() {
-  zle accept-line
+function clear_buffer() {
+  move_to_end_of_buffer
+  last_cursor=$CURSOR
+  zle .backward-kill-word
+  while [[ $CURSOR != $last_cursor ]] ; do
+    last_cursor=$CURSOR
+    zle .backward-kill-word
+  done
 }
-line-init-user() {
-  end_search
-  #zle accept-line
-  #exit
-}
-zle -N zle-line-init line-init-user
-
-start_search() {
-  zle -A self-insert save-self-insert
-  zle -N self-insert self_insert_searches
-  zle -N zle-line-init line_init_exits
-}
-end_search() {
-  word=''
-  zle -A save-self-insert self-insert
-  zle -N zle-line-init line-init-user
-}
-
-trap ctrl_c INT
-
-function ctrl_c() {
-  echo "** Trapped CTRL-C"
-  end_search
-}
-
 
 function vi-history-search-backward() {
-  #echo "NHDALY: '$@'"
-  SEARCHING=true
-  #zle .vi-history-search-backward "$@"
-  #zle .history-incremental-search-backward "$@"
   start_search
   search_buffer
-  #zle -D zle-line-init
-  #zle -N self-insert .self-insert
-
-  #zle 
 }
 zle -N vi-history-search-backward
 
+word=
+original_buffer=
+
+start_search() {
+  original_buffer=$BUFFER
+  #zle push-line
+  #BUFFER=$original_buffer
+}
+end_search() {
+  zle .end-of-history
+  zle .vi-history-search-backward "$word"
+  zle redisplay
+  word=''
+}
+
+quit_search() {
+  word=''
+  #zle .beginning-of-buffer-or-history
+  zle .end-of-history
+  clear_buffer
+  BUFFER=$original_buffer
+  original_buffer=''
+  #zle get-line
+}
+
+delete_word() {
+  if (( $#word == 0 )) ; then
+    quit_search
+    return 1
+  else
+    word=${word:0:-1}
+  fi
+  return 0
+}
+
 search_buffer() {
-  echo -n "\n? "
-  #get_key
+  zle -R "?"
   key=
-  #while read -k key
-  #do
+  while true
+  do
+  #get_key key
+  #zle get-line # put line back so that if we ctrl-c instead of typing a char it goes back.
   read -k key
+  #zle push-line # put line back so that if we ctrl-c it goes back.
     case $key in
       '')  end_search ; return ;;  # enter
-      '')  word=${word:0:-1} ; echo -n '\r'$word'    ' ;;  # delete
-      '')  end_search ; echo '^C!' ;;  # delete
+      '')  delete_word || return ;;  # delete
+      '')  quit_search ; echo '^C!' ; return ;;  # delete
       *)     word=$word$key
     esac
 
-    #echo -n '\r? '$word
-    echo -n '\r? '$word
-
+    zle .end-of-history
+    clear_buffer
+    BUFFER=$original_buffer
     zle .vi-history-search-backward "$word"
+    zle redisplay
+
+    zle -R '? '$word
+
     #zle infer-next-history
     #zle push-line
     #zle get-line
@@ -92,48 +93,8 @@ search_buffer() {
     #zle redisplay
     #zle accept-and-infer-next-history
     #zle .history-incremental-search-backward "$word"
-  #done
+  done
 }
-
-#function self-insert() {
-#  if [[ SEARCHING == true ]] ; then
-#    echo "SEARCHING: '$@'"
-#  else
-#    zle .self-insert "$@"
-#  fi
-#}
-#zle -N self-insert
-#
-#function self-insert-unmeta() {
-#  if [[ SEARCHING == true ]] ; then
-#    echo "SEARCHING: '$@'"
-#  fi
-#  echo "self-insert-unmeta: '$@'"
-#  zle .self-insert-unmeta "$@"
-#}
-#zle -N self-insert-unmeta
-#
-#function quoted-insert() {
-#  if [[ SEARCHING == true ]] ; then
-#    echo "SEARCHING: '$@'"
-#  fi
-#  echo "quoted-insert: '$@'"
-#  zle .quoted-insert "$@"
-#}
-#zle -N quoted-insert
-#
-#function vi-quoted-insert() {
-#  if [[ SEARCHING == true ]] ; then
-#    echo "SEARCHING: '$@'"
-#  fi
-#  echo "vi-quoted-insert: '$@'"
-#  zle .vi-quoted-insert "$@"
-#}
-#zle -N vi-quoted-insert
-#function zle() {
-#  #echo "NHDALY-zle"
-#  builtin zle "$@"
-#}
 
 _key()
 {
@@ -141,7 +102,6 @@ _key()
   ESC=$'\e'
   _KEY=
   read -k _KEY
-  echo "_KEY: '$_KEY'"
   case $_KEY in
     "$ESC")
         while read -k kp
@@ -159,7 +119,6 @@ _key()
 get_key() {
   _key x
 
-  echo "_key: '$_key'"
 
   case $x in
     $'\e[11~' | $'\e[OP') key=F1 ;;
@@ -182,6 +141,5 @@ get_key() {
     *) key=??? ;;
   esac
 
-  echo "You have pressed $key"
-  export _pressed_key=$key
+  printf -v "${1:-key}" "%s" "$key"
 }
