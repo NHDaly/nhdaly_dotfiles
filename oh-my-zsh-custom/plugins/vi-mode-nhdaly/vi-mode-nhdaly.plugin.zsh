@@ -12,8 +12,41 @@
 SEARCHING=false
 word=
 
-self-insert-exits() {
-  exit
+zle -A self-insert save-self-insert
+
+self_insert_exits() {
+  zle accept-line
+}
+self_insert_searches() {
+  zle vi-history-search-backward
+}
+
+line_init_exits() {
+  zle accept-line
+}
+line-init-user() {
+  end_search
+  #zle accept-line
+  #exit
+}
+zle -N zle-line-init line-init-user
+
+start_search() {
+  zle -A self-insert save-self-insert
+  zle -N self-insert self_insert_searches
+  zle -N zle-line-init line_init_exits
+}
+end_search() {
+  word=''
+  zle -A save-self-insert self-insert
+  zle -N zle-line-init line-init-user
+}
+
+trap ctrl_c INT
+
+function ctrl_c() {
+  echo "** Trapped CTRL-C"
+  end_search
 }
 
 
@@ -22,9 +55,10 @@ function vi-history-search-backward() {
   SEARCHING=true
   #zle .vi-history-search-backward "$@"
   #zle .history-incremental-search-backward "$@"
-  zle -N self-insert self-insert-exits
+  start_search
   search_buffer
-  zle -N self-insert .self-insert
+  #zle -D zle-line-init
+  #zle -N self-insert .self-insert
 
   #zle 
 }
@@ -34,26 +68,31 @@ search_buffer() {
   echo -n "\n? "
   #get_key
   key=
-  while read -k key
-  do
+  #while read -k key
+  #do
+  read -k key
     case $key in
-      '')  echo '\r' ; return ;;  # enter
+      '')  end_search ; return ;;  # enter
       '')  word=${word:0:-1} ; echo -n '\r'$word'    ' ;;  # delete
+      '')  end_search ; echo '^C!' ;;  # delete
       *)     word=$word$key
     esac
 
+    #echo -n '\r? '$word
     echo -n '\r? '$word
 
     zle .vi-history-search-backward "$word"
     #zle infer-next-history
     #zle push-line
-    zle get-line
+    #zle get-line
     #zle clear-screen
-    zle redisplay
-    zle recursive-edit
+    #zle redisplay
+    #zle reset-prompt
+    #zle recursive-edit
+    #zle redisplay
     #zle accept-and-infer-next-history
     #zle .history-incremental-search-backward "$word"
-  done
+  #done
 }
 
 #function self-insert() {
