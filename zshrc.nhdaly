@@ -98,6 +98,9 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
+# Vi mode
+bindkey -v
+
 export EDITOR='vim'
 
 
@@ -146,4 +149,4 @@ unsetopt sharehistory
 #export HISTFILE=~/tmp_history_file.history
 
 export PATH=$PATH:~/dotfiles/nhdaly/scripts
-
+source ~/.bashrc
