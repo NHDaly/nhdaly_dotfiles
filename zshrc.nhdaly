@@ -149,4 +149,6 @@ unsetopt sharehistory
 #export HISTFILE=~/tmp_history_file.history
 
 export PATH=$PATH:~/dotfiles/nhdaly/scripts
+
+# Load bashrc so bash and zsh stay in sync.
 source ~/.bashrc
