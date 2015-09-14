@@ -1,0 +1,5 @@
+Install these files:
+
+$  ln -s ~/dotfiles/nhdaly/mac/pbcopy.plist ~/Library/LaunchAgents/pbcopy.plist
+$  launchctl load ~/Library/LaunchAgents/pbcopy.plist
+
