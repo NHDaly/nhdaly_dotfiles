@@ -29,7 +29,14 @@ bind-key j command-prompt -p "join pane from:"  "join-pane -s '%%'"
 bind-key s command-prompt -p "send pane to:"  "join-pane -t '%%'"
 
 
-set-option -g history-limit 10000
+# Max scrollback for an int16. I'm not sure if this is actually the max
+# possible, but it's pretty huge and I saw this online somewhere else.
+set-option -g history-limit 32768
+
+# AWESOME key command ^b+P to save all the scrollback history to a file.
+bind-key P command-prompt -p 'save scrollback history to filename:' 'capture-pane -S -32768 ; save-buffer %1 ; delete-buffer'
+# Same as above but with a default value for filename.
+#bind-key P command-prompt -p 'save scrollback history to filename:' -I '~/tmux-pane.scrollback' 'capture-pane -S -32768 ; save-buffer %1 ; delete-buffer'
 
 
 # Make sure this is last, because Powerline might not be installed.
