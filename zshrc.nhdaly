@@ -69,8 +69,9 @@ plugins=(git, pip, vi-mode) #, vi-mode-nhdaly)
 # User configuration
 
 # ==== vi-mode settings ====
-bindkey "^R" history-incremental-search-backward
+bindkey "" history-incremental-search-backward
 bindkey -M vicmd "s" vi-cmd-mode # Turn off subsitute (make it a noop).
+bindkey "[3~" vi-delete-char # fn-delete should delete forward.
 # ==== end vi-mode settings ====
 
 export MANPATH="/usr/local/man:$MANPATH"
