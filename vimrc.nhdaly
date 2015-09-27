@@ -3,8 +3,8 @@ set nocompatible
 
 let mapleader = ","
 
-""=========== MY PLUGINS ===========""
-"" --------- VUNDLE ---------------- "
+""=========== MY PLUGINS =========== {{{
+"" --------- VUNDLE ---------------- {{{
 " Vundle Plugins -- https://github.com/gmarik/Vundle.vim
 filetype off                  " required
 
@@ -17,7 +17,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" ------- Put Plugins Here -----------------------"
+" ------- Put Vundle Plugins Here -------------------- {{{
 
 " For 'better c++ vim highlighting'
 Plugin 'octol/vim-cpp-enhanced-highlight'
@@ -32,6 +32,7 @@ let g:windowswap_map_keys = 0 "prevent default bindings
 nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
 Plugin 'wesQ3/vim-windowswap'
 
+" ------- End Vundle Plugins ------------------------- }}}
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -47,8 +48,9 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+"" --------- END VUNDLE ---------------- }}}
 
-"" --------- VimBall ---------------"
+"" --------- VimBall --------------- {{{
 
 " CamelCaseMotion: http://www.vim.org/scripts/script.php?script_id=1905
 " Use <shift>key instead of ,key.
@@ -63,7 +65,20 @@ runtime plugin/camelcasemotion.vim
 omap iW iE
 xmap iW iE
 
-""======== MY ADDITIONS ==========""
+"" ----- End VimBall --------------- }}}
+
+" ---- Manual Plugins ---- {{{
+
+source ~/.vim/plugin/bclose.vim 
+
+" Let bclose close a buffer even if it's in multiple windows
+let bclose_multiple = 1
+
+" }}}
+
+""======= END MY PLUGINS =========== }}}
+
+""======== MY ADDITIONS ================= {{{
 
 "Set options for formatting text (with autoformat command [=])
 set formatoptions=tcqn "autowrap, maintain comments, format comments, lists
@@ -80,8 +95,8 @@ map <F4> :e %:p:s,.h$,.X123X,:s,.cc$,.h,:s,.X123X$,.cc,<CR>
 cabbr <expr> %% expand("%:p:h")
 
 
-" Don't use Modelines unless you really need them, and then turn it on manually
-" per session. See google search for 'vim modeline vulnerability' or
+" Don't use Modelines unless you really need them, and then turn it on
+" manually per session. See google search for 'vim modeline vulnerability' or
 " http://www.techrepublic.com/blog/it-security/turn-off-modeline-support-in-vim/
 set modelines=0
 
@@ -94,7 +109,7 @@ cmap w!! %!sudo tee > /dev/null %
 
 
 " Set (weird) hotkeys for horizontal scrolling.
-map <A-V> <ScrollWheelLeft>
+" map <A-V> <ScrollWheelLeft>
 
 
 " set tab stuff
@@ -118,7 +133,7 @@ set showmatch "Highlight matching parens
 " Note -- this seems to be enabled even without this line...
 set hidden "Allow leaving unsaved buffers to switch windows.
 
-"---- Search settings ------"
+"---- Search settings ------ {{{
 "Set vim to use Perl-like regexes instead of Vim-style
 "nnoremap / /\v
 "vnoremap / /\v
@@ -132,6 +147,7 @@ nnoremap <leader><space> :noh<cr>
 "Tab to match parentheses
 nnoremap <S-tab> %
 vnoremap <S-tab> %
+" }}}
 
 set pastetoggle=<C-Y>
 set number "show line numbers. ... duh?
@@ -178,13 +194,15 @@ nmap s :w <enter>
 "
 "let g:powerline_config_overrides 
 
-" Let bclose close a buffer even if it's in multiple windows
-let bclose_multiple = 1
+" Turn on folding for vim files with the three-bracket marker.
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
 
-source ~/.vim/plugin/bclose.vim 
+""========= END MY ADDITIONS ============ }}}
 
-" ============== END MY ADDITIONS ==================
-
+""========= Starter Vimrc ============ {{{
 " An example for a vimrc file.
 "
 " Maintainer:	Bram Moolenaar <Bram@vim.org>
@@ -291,8 +309,9 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 		  \ | wincmd p | diffthis
 endif
+""========= End Starter Vimrc ========= }}}
 
-" -------- iTerm Colors --------------
+" -------- iTerm Colors -------------- {{{
 hi Statement ctermfg=3
 hi cCustomClass ctermfg=7
 hi Function ctermfg=7
@@ -303,4 +322,5 @@ set cursorline
 highlight CursorLine guibg=none guifg=bold gui=none term=none cterm=none
 " Selection
 hi Visual term=reverse ctermfg=0
+" -------- End iTerm Colors ---------- }}}
 
