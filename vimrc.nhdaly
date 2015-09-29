@@ -200,6 +200,9 @@ augroup filetype_vim
     autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
+" <leader>g does a grep search for the word under the cursor in this dir.
+:nnoremap <leader>g :execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
+
 ""========= END MY ADDITIONS ============ }}}
 
 ""========= Starter Vimrc ============ {{{
