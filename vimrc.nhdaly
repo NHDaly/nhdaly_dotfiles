@@ -32,6 +32,9 @@ let g:windowswap_map_keys = 0 "prevent default bindings
 nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
 Plugin 'wesQ3/vim-windowswap'
 
+" For vim + git!
+Plugin 'tpope/vim-fugitive'
+
 " ------- End Vundle Plugins ------------------------- }}}
 
 " All of your Plugins must be added before the following line
