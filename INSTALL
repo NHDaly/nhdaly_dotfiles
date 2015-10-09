@@ -4,16 +4,18 @@
 set -e -x
 
 # To install, make a link to these files in your home directory:
-ln -s ~/dotfiles/nhdaly/zshrc.nhdaly ~/.zshrc
-ln -s ~/dotfiles/nhdaly/vimrc.nhdaly ~/.vimrc
-ln -s ~/dotfiles/nhdaly/vim ~/.vim
-ln -s ~/dotfiles/nhdaly/tmux.conf.nhdaly ~/.tmux.conf
-
-# If these fail, and you're confident about it, you can erase the preexisting files:
+ln -s ~/dotfiles/nhdaly/zshrc.nhdaly ~/.zshrc && \
+ln -s ~/dotfiles/nhdaly/vimrc.nhdaly ~/.vimrc && \
+ln -s ~/dotfiles/nhdaly/vim ~/.vim && \
+ln -s ~/dotfiles/nhdaly/tmux.conf.nhdaly ~/.tmux.conf || \
+echo "
+# Failed to install. If you're confident about it, you can erase those
+# pre-existing files with these commands:
 # rm -rf ~/.vim
 # rm ~/.vimrc
 # rm ~/.zshrc
 # rm ~/.tmux.conf
+" && exit 1
 
 # Also you'll need to install oh-my-zsh:
 stat ~/.oh-my-zsh || git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
