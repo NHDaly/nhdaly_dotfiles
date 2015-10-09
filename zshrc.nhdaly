@@ -148,6 +148,9 @@ alias cdf="~/dotfiles/nhdaly/scripts/cdiffer_sxs.sh"
 setopt incappendhistory
 unsetopt sharehistory
 #export HISTFILE=~/tmp_history_file.history
+# Save all the data!
+export HISTSIZE=2147483648  # 2 GiB (note each entry might be like 100 bytes)
+export SAVEHIST=2147483648
 
 export PATH=$PATH:~/dotfiles/nhdaly/scripts
 

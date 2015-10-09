@@ -35,6 +35,16 @@ Plugin 'wesQ3/vim-windowswap'
 " For vim + git!
 Plugin 'tpope/vim-fugitive'
 
+" For code formatting! TODO(nhdaly): Turn this on. Should be cool!
+"   Plugin 'google/vim-maktaba'
+"   Plugin 'google/vim-codefmt'
+"   " Also add Glaive, which is used to configure codefmt's maktaba flags. See
+"   " `:help :Glaive` for usage.
+"   Plugin 'google/vim-glaive'
+"   call glaive#Install()
+"   " Optional: Enable codefmt's default mappings on the <Leader>= prefix.
+"   Glaive codefmt plugin[mappings]
+
 " ------- End Vundle Plugins ------------------------- }}}
 
 " All of your Plugins must be added before the following line

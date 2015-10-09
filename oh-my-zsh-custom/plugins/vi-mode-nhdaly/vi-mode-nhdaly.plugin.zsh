@@ -23,6 +23,7 @@ function vi-history-search-backward() {
   search_buffer
 }
 zle -N vi-history-search-backward
+#bindkey -v "" vi-history-search-backward-nhdaly
 
 word=
 original_buffer=
@@ -42,7 +43,7 @@ end_search() {
 quit_search() {
   word=''
   #zle .beginning-of-buffer-or-history
-  zle .end-of-history
+  #zle .end-of-history
   clear_buffer
   BUFFER=$original_buffer
   original_buffer=''
@@ -64,38 +65,39 @@ search_buffer() {
   key=
   while true
   do
-  #get_key key
-  #zle get-line # put line back so that if we ctrl-c instead of typing a char it goes back.
-  read -k key
-  #zle push-line # put line back so that if we ctrl-c it goes back.
-  case $key in
-    '')  end_search ; return ;;  # enter
-    '')  delete_word || return ;;  # delete
-    '')  quit_search ; return ;;  # ctrl-c
-    '')  quit_search ; return ;;  # ctrl-c (if read -k is interrupted)
-    #'OD') move_left ;;
-    *)     word=$word$key
-  esac
+    #get_key key
+    #zle get-line # put line back so that if we ctrl-c instead of typing a char it goes back.
+    read -k key
+    #zle push-line # put line back so that if we ctrl-c it goes back.
+    case $key in
+      '')  end_search ; return ;;  # enter
+      '')  delete_word || return ;;  # delete
+      '')  quit_search ; return ;;  # ctrl-c
+      '')  quit_search ; return ;;  # ctrl-c (if read -k is interrupted)
+      #'OD') move_left ;;
+      *)     word=$word$key
+    esac
 
-  zle .end-of-history
-  clear_buffer
-  BUFFER=$original_buffer
-  zle .vi-history-search-backward "$word"
-  zle redisplay
+    # TOOD(nhdaly): Instead of going to end, just go back one line in history
+    #zle .end-of-history
+    clear_buffer
+    BUFFER=$original_buffer
+    zle .vi-history-search-backward "$word"
+    zle redisplay
 
-  zle -R '? '$word
+    zle -R '? '$word
 
-  #zle infer-next-history
-  #zle push-line
-  #zle get-line
-  #zle clear-screen
-  #zle redisplay
-  #zle reset-prompt
-  #zle recursive-edit
-  #zle redisplay
-  #zle accept-and-infer-next-history
-  #zle .history-incremental-search-backward "$word"
-done
+    #zle infer-next-history
+    #zle push-line
+    #zle get-line
+    #zle clear-screen
+    #zle redisplay
+    #zle reset-prompt
+    #zle recursive-edit
+    #zle redisplay
+    #zle accept-and-infer-next-history
+    #zle .history-incremental-search-backward "$word"
+  done
 }
 
 _key()
