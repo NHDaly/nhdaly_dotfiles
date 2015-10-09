@@ -39,8 +39,27 @@ bind-key P command-prompt -p 'save scrollback history to filename:' 'capture-pan
 #bind-key P command-prompt -p 'save scrollback history to filename:' -I '~/tmux-pane.scrollback' 'capture-pane -S -32768 ; save-buffer %1 ; delete-buffer'
 
 
-# Make sure this is last, because Powerline might not be installed.
 # Add pretty powerline status
 run-shell "powerline-daemon -q"
 source "/usr/local/lib/python2.7/dist-packages/powerline/bindings/tmux/powerline.conf"
 
+## ======= Tmux Plugin Manager =================================================
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+
+# Enables C-b u to open any url printed to the screen. Awesome.
+# Note, you must install the urlview binary separately (brew, apt-get, etc.).
+set -g @plugin 'tmux-plugins/tmux-urlview'
+
+# prefix + / searches regex on output, plus a bunch of predefined searches.
+set -g @plugin 'tmux-plugins/tmux-copycat'
+
+
+# Other examples:
+# set -g @plugin 'github_username/plugin_name'
+# set -g @plugin 'git@github.com/user/plugin'
+# set -g @plugin 'git@bitbucket.com/user/plugin'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'

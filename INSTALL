@@ -25,3 +25,7 @@ vim +PluginInstall +qall
 # Then make zsh your default shell!
 echo $SHELL | grep zsh | wc -l | ~/dotfiles/nhdaly/scripts/math-eval-bool-expr "== 1" || chsh -s /bin/zsh
 
+
+# installed tools
+# urlview  # (brew install urlview)
+
