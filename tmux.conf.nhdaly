@@ -60,6 +60,10 @@ set -g @plugin 'tmux-plugins/tmux-urlview'
 
 # prefix + / searches regex on output, plus a bunch of predefined searches.
 set -g @plugin 'tmux-plugins/tmux-copycat'
+# Use vi-mode keys for navigating windows (makes tmux-copycat work for me).
+set-window-option -g mode-keys vi
+bind-key -t vi-copy 'v' begin-selection
+bind-key -t vi-copy 'y' copy-selection
 
 
 # Other examples:
