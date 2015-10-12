@@ -35,6 +35,9 @@ Plugin 'wesQ3/vim-windowswap'
 " For vim + git!
 Plugin 'tpope/vim-fugitive'
 
+" Let you restore a vim session with ":Obsess"
+Plugin 'tpope/vim-obsession'
+
 " For code formatting! TODO(nhdaly): Turn this on. Should be cool!
 "   Plugin 'google/vim-maktaba'
 "   Plugin 'google/vim-codefmt'

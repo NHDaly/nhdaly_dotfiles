@@ -75,6 +75,9 @@ bind-key -t vi-copy 'y' copy-selection
 # prefix + Ctrl-s - save
 # prefix + Ctrl-r - restore
 set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @resurrect-capture-pane-contents 'on'
+# for vim
+set -g @resurrect-strategy-vim 'session'
 
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
