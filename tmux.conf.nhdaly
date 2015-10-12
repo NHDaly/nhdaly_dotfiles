@@ -51,8 +51,15 @@ source "/usr/local/lib/python2.7/dist-packages/powerline/bindings/tmux/powerline
 
 ## ======= Tmux Plugin Manager =================================================
 # List of plugins
+# prefix + I - install these plugins.
+# prefix + U - update these plugins.
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
+
+# Follow this style:
+# set -g @plugin 'github_username/plugin_name'
+# set -g @plugin 'git@bitbucket.com/user/plugin'
+
 
 # Enables C-b u to open any url printed to the screen. Awesome.
 # Note, you must install the urlview binary separately (brew, apt-get, etc.).
@@ -65,11 +72,10 @@ set-window-option -g mode-keys vi
 bind-key -t vi-copy 'v' begin-selection
 bind-key -t vi-copy 'y' copy-selection
 
+# prefix + Ctrl-s - save
+# prefix + Ctrl-r - restore
+set -g @plugin 'tmux-plugins/tmux-resurrect'
 
-# Other examples:
-# set -g @plugin 'github_username/plugin_name'
-# set -g @plugin 'git@github.com/user/plugin'
-# set -g @plugin 'git@bitbucket.com/user/plugin'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
