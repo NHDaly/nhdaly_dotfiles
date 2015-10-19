@@ -35,6 +35,15 @@ bind-key j command-prompt -p "join pane from:"  "join-pane -s '%%'"
 bind-key s command-prompt -p "send pane to:"  "join-pane -t '%%'"
 
 
+# resize panes like vim
+# feel free to change the "1" to however many lines you want to resize by, only
+# one at a time can be slow
+bind < resize-pane -L 1
+bind > resize-pane -R 1
+bind - resize-pane -D 1
+bind + resize-pane -U 1
+
+
 # Max scrollback for an int16. I'm not sure if this is actually the max
 # possible, but it's pretty huge and I saw this online somewhere else.
 set-option -g history-limit 32768
