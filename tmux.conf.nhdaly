@@ -9,6 +9,10 @@ bind ^A select-pane -t :.+
 # add mouse support (pane resizing, pane selecting, window select -- no scroll)
 set-option -g mouse on
 
+# Start copy mode when scrolling up and exit when scrolling down to bottom.
+bind -n WheelUpPane if-shell -F -t = "#{pane_in_mode}" "send-keys -M" "copy-mode -e"
+
+
 # -------- Legacy options for tmux 2.0 configs -------
 # add mouse scrolling
 #setw -g mode-mouse on
