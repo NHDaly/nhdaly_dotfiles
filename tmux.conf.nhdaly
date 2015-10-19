@@ -10,8 +10,9 @@ bind ^A select-pane -t :.+
 set-option -g mouse on
 
 # Start copy mode when scrolling up and exit when scrolling down to bottom.
-bind -n WheelUpPane if-shell -F -t = "#{pane_in_mode}" "send-keys -M" "copy-mode -e"
-
+# The "#{mouse_any_flag}" check just sends scrolls to any program running that
+# has mouse support (like vim).
+bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft= '#{pane_in_mode}' 'send-keys -M' 'copy-mode -e'"
 
 # -------- Legacy options for tmux 2.0 configs -------
 # add mouse scrolling
