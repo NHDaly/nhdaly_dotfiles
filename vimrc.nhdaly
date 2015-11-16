@@ -5,6 +5,7 @@ let mapleader = ","
 
 ""=========== MY PLUGINS =========== {{{
 "" --------- VUNDLE ---------------- {{{
+"     Vundle Setup                   {{{
 " Vundle Plugins -- https://github.com/gmarik/Vundle.vim
 filetype off                  " required
 
@@ -16,8 +17,8 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-
-" ------- Put Vundle Plugins Here -------------------- {{{
+" }}}
+" ------- Put Vundle Plugins Here --------------------
 
 " For 'better c++ vim highlighting'
 Plugin 'octol/vim-cpp-enhanced-highlight'
@@ -48,8 +49,9 @@ Plugin 'tpope/vim-obsession'
 "   " Optional: Enable codefmt's default mappings on the <Leader>= prefix.
 "   Glaive codefmt plugin[mappings]
 
-" ------- End Vundle Plugins ------------------------- }}}
+" ------- End Vundle Plugins -------------------------
 
+"      Vundle Setup                   {{{
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -63,6 +65,7 @@ filetype plugin indent on    " required
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
 " see :h vundle for more details or wiki for FAQ
+" }}}
 " Put your non-Plugin stuff after this line
 "" --------- END VUNDLE ---------------- }}}
 
