@@ -44,6 +44,9 @@ Plugin 'tpope/vim-fugitive'
 " Let you restore a vim session with ":Obsess"
 Plugin 'tpope/vim-obsession'
 
+" Get tmux.conf highlighting/syntax settings.
+Plugin 'tmux-plugins/vim-tmux'
+
 " For code formatting! TODO(nhdaly): Turn this on. Should be cool!
 " Add maktaba and codefmt to the runtimepath.
 " (The latter must be installed before it can be used.)
@@ -131,6 +134,8 @@ cmap w!! %!sudo tee > /dev/null %
 " Set (weird) hotkeys for horizontal scrolling.
 " map <A-V> <ScrollWheelLeft>
 
+" Show the status line even with only one file open.
+set laststatus=2
 
 " set tab stuff
 set tabstop=2

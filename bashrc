@@ -12,3 +12,7 @@ export PATH="/Users/Daly/Documents/School/EECS/Downloads/Frameworks/android-ndk-
 
 export ANDROID_HOME="/Users/Daly/Documents/School/EECS/Downloads/Frameworks/android-sdk-macosx/"
 export NDK_MODULE_PATH="$ANDROID_HOME"/..
+
+# remove google3 JDK /usr/local/buildtools/java/jdk/bin from PATH
+export PATH=${PATH/\/usr\/local\/buildtools\/java\/jdk\/bin:/}
+

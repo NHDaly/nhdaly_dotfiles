@@ -5,6 +5,12 @@ unbind C-z
 unbind ^A
 bind ^A select-pane -t :.+
 
+# Set a new prefix.
+unbind C-b
+set -g prefix C-h
+bind C-h send-prefix
+
+
 # -------- Mouse support for tmux 2.1 ----------------
 # add mouse support (pane resizing, pane selecting, window select -- no scroll)
 set-option -g mouse on

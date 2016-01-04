@@ -1,6 +1,7 @@
 let g:gofmt_command = "goimports"
 set rtp+=$GOROOT/misc/vim
-set shiftwidth=8  " choose a width you like, only necessary as a bug workaround
+" The following line doesn't really seem to do anything... :(
+set shiftwidth=4  " choose a width you like, only necessary as a bug workaround
 filetype plugin indent on
 
 " Replace all the various ={motion} keys to golang Fmt
