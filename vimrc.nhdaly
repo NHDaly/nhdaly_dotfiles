@@ -20,10 +20,19 @@ Plugin 'gmarik/Vundle.vim'
 " }}}
 " ------- Put Vundle Plugins Here --------------------
 
-" YouCompleteMe -- Auto Completions
-Plugin 'valloric/YouCompleteMe'
-let g:ycm_always_populate_location_list = 1
+if exists("g:running_at_work")
+  " Skip these, because I already have them in my work vimrc.
+else
+  " YouCompleteMe -- Auto Completions
+  Plugin 'valloric/YouCompleteMe'
+  let g:ycm_always_populate_location_list = 1
 
+  " For code formatting! TODO(nhdaly): Turn this on. Should be cool!
+  " Add maktaba and codefmt to the runtimepath.
+  " (The latter must be installed before it can be used.)
+  Plugin 'google/vim-maktaba'
+  Plugin 'google/vim-codefmt'
+endif
 
 " For 'better c++ vim highlighting'
 Plugin 'octol/vim-cpp-enhanced-highlight'
@@ -43,15 +52,6 @@ Plugin 'tpope/vim-fugitive'
 
 " Let you restore a vim session with ":Obsess"
 Plugin 'tpope/vim-obsession'
-
-" Get tmux.conf highlighting/syntax settings.
-Plugin 'tmux-plugins/vim-tmux'
-
-" For code formatting! TODO(nhdaly): Turn this on. Should be cool!
-" Add maktaba and codefmt to the runtimepath.
-" (The latter must be installed before it can be used.)
-Plugin 'google/vim-maktaba'
-Plugin 'google/vim-codefmt'
 
 " ------- End Vundle Plugins -------------------------
 
