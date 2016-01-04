@@ -5,6 +5,7 @@ let mapleader = ","
 
 ""=========== MY PLUGINS =========== {{{
 "" --------- VUNDLE ---------------- {{{
+"     Vundle Setup                   {{{
 " Vundle Plugins -- https://github.com/gmarik/Vundle.vim
 filetype off                  " required
 
@@ -16,8 +17,13 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
+" }}}
+" ------- Put Vundle Plugins Here --------------------
 
-" ------- Put Vundle Plugins Here -------------------- {{{
+" YouCompleteMe -- Auto Completions
+Plugin 'valloric/YouCompleteMe'
+let g:ycm_always_populate_location_list = 1
+
 
 " For 'better c++ vim highlighting'
 Plugin 'octol/vim-cpp-enhanced-highlight'
@@ -39,17 +45,14 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-obsession'
 
 " For code formatting! TODO(nhdaly): Turn this on. Should be cool!
-"   Plugin 'google/vim-maktaba'
-"   Plugin 'google/vim-codefmt'
-"   " Also add Glaive, which is used to configure codefmt's maktaba flags. See
-"   " `:help :Glaive` for usage.
-"   Plugin 'google/vim-glaive'
-"   call glaive#Install()
-"   " Optional: Enable codefmt's default mappings on the <Leader>= prefix.
-"   Glaive codefmt plugin[mappings]
+" Add maktaba and codefmt to the runtimepath.
+" (The latter must be installed before it can be used.)
+Plugin 'google/vim-maktaba'
+Plugin 'google/vim-codefmt'
 
-" ------- End Vundle Plugins ------------------------- }}}
+" ------- End Vundle Plugins -------------------------
 
+"      Vundle Setup                   {{{
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -63,6 +66,7 @@ filetype plugin indent on    " required
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
 " see :h vundle for more details or wiki for FAQ
+" }}}
 " Put your non-Plugin stuff after this line
 "" --------- END VUNDLE ---------------- }}}
 
@@ -181,6 +185,29 @@ set tags=./tags "Where to look for the tags
 "set to use search for tags instead of default
 "noremap <c-]> g<c-]>
 "noremap <c-LeftMouse> <LeftMouse>g<c-]>
+
+" Set emacs-style cmdline editing keys.
+" start of line
+cnoremap <C-A>         <Home>
+" delete character under cursor
+"cnoremap <C-D>         <Del>
+" end of line
+cnoremap <C-E>         <End>
+" back/forward one character
+"cnoremap <C-B>         <Left>
+"cnoremap <C-F>         <Right>
+" recall newer command-line
+cnoremap <C-N>         <Down>
+" recall previous (older) command-line
+cnoremap <C-P>         <Up>
+" back one word
+"cnoremap <Esc><C-B>    <S-Left>
+" forward one word
+"cnoremap <Esc><C-F>    <S-Right>
+" <C-k>: delete to end. From http://stackoverflow.com/a/26310522/751061
+cnoremap <C-k> <C-\>e getcmdpos() == 1 ?
+      \ '' : getcmdline()[:getcmdpos()-2]<CR>
+
 
 
 "Fix j and k for wrapped lines:
@@ -331,14 +358,15 @@ endif
 ""========= End Starter Vimrc ========= }}}
 
 " -------- iTerm Colors -------------- {{{
+set t_Co=256
 hi Statement ctermfg=3
 hi cCustomClass ctermfg=7
 hi Function ctermfg=7
 hi LineNr ctermfg=3
 " Cursor Line number
-hi CursorLineNr ctermfg=9
+hi CursorLineNr ctermfg=1
 set cursorline
-highlight CursorLine guibg=none guifg=bold gui=none term=none cterm=none
+highlight CursorLine ctermfg=none gui=none term=none cterm=none
 " Selection
 hi Visual term=reverse ctermfg=0
 " -------- End iTerm Colors ---------- }}}

@@ -5,13 +5,23 @@ unbind C-z
 unbind ^A
 bind ^A select-pane -t :.+
 
+# -------- Mouse support for tmux 2.1 ----------------
+# add mouse support (pane resizing, pane selecting, window select -- no scroll)
+set-option -g mouse on
+
+# See also tmux-scroll-copy-mode plugin below to restore pre-2.1 tmux
+# scroll-starts-copy-mode settings.
+
+# -------- Legacy options for tmux 2.0 configs -------
 # add mouse scrolling
-setw -g mode-mouse on
+#setw -g mode-mouse on
 
 # Allow mouse to manage panes
-set -g mouse-select-pane on
-set -g mouse-select-window on
-set -g mouse-resize-pane on
+#set -g mouse-select-pane on
+#set -g mouse-select-window on
+#set -g mouse-resize-pane on
+
+
 
 # Open new panes in the same CWD as the current pane.
 bind % split-window -h -c "#{pane_current_path}"
@@ -45,6 +55,17 @@ bind -r h select-pane -L
 bind -r j select-pane -D
 bind -r k select-pane -U
 bind -r l select-pane -R
+
+bind-key S source ~/.tmux.conf
+
+
+# resize panes like vim
+# feel free to change the "1" to however many lines you want to resize by, only
+# one at a time can be slow
+bind -r < resize-pane -L 1
+bind -r > resize-pane -R 1
+bind -r - resize-pane -D 1
+bind -r + resize-pane -U 1
 
 
 # Max scrollback for an int16. I'm not sure if this is actually the max
@@ -96,6 +117,18 @@ set -g @resurrect-capture-pane-contents 'on'
 # for vim
 set -g @resurrect-strategy-vim 'session'
 
+set -g @plugin 'nhdaly/tmux-scroll-copy-mode'
+#set -g @plugin '/Users/nhdaly/src/tmux-scroll-copy-mode'
+set -g @scroll-without-changing-pane 'on' # change from tmux v2.0.
+set -g @scroll-speed-num-lines-per-scroll 2 # change from tmux v2.0.
+set -g @prevent-scroll-for-fullscreen-alternate-buffer 'on' # change from tmux v2.0.
+
+# The default clean-plugins binding doesn't work for me on iTerm.
+bind-key C run-shell ~/.tmux/plugins/tpm/bin/clean_plugins
+
+# === !! Auto-install tpm if it hasn't been installed already !! ===
+if "test ! -d ~/.tmux/plugins/tpm" \
+	   "run 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm'"
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
