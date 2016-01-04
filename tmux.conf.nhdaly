@@ -44,6 +44,8 @@ set-option -g default-shell /bin/zsh
 bind-key j command-prompt -p "join pane from:"  "join-pane -s '%%'"
 bind-key s command-prompt -p "send pane to:"  "join-pane -t '%%'"
 
+bind-key S source ~/.tmux.conf
+
 
 # resize panes like vim
 # feel free to change the "1" to however many lines you want to resize by, only
@@ -99,7 +101,7 @@ set -g @resurrect-capture-pane-contents 'on'
 set -g @resurrect-strategy-vim 'session'
 
 set -g @plugin 'nhdaly/tmux-scroll-copy-mode'
-#set -g @plugin '/Users/Daly/Documents/Developer/plugins/tmux_scroll_copy_mode'
+#set -g @plugin '/Users/nhdaly/src/tmux-scroll-copy-mode'
 set -g @scroll-without-changing-pane 'on' # change from tmux v2.0.
 set -g @scroll-speed-num-lines-per-scroll 2 # change from tmux v2.0.
 set -g @prevent-scroll-for-fullscreen-alternate-buffer 'on' # change from tmux v2.0.
