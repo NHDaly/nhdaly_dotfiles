@@ -31,8 +31,20 @@ set-environment -g 'IGNOREEOF' 2
 set-option -g default-shell /bin/zsh
 
 ## Join windows: <prefix> s, <prefix> j
-bind-key j command-prompt -p "join pane from:"  "join-pane -s '%%'"
-bind-key s command-prompt -p "send pane to:"  "join-pane -t '%%'"
+#bind-key j command-prompt -p "join pane from:"  "join-pane -s '%%'"
+#bind-key s command-prompt -p "send pane to:"  "join-pane -t '%%'"
+
+# Bind keys to resize windows like vim.
+bind -r < resize-pane -L 2
+bind -r > resize-pane -R 2
+bind -r - resize-pane -D 2
+bind -r + resize-pane -U 2
+
+# Bind keys to navigate windows like vim.
+bind -r h select-pane -L
+bind -r j select-pane -D
+bind -r k select-pane -U
+bind -r l select-pane -R
 
 
 # Max scrollback for an int16. I'm not sure if this is actually the max
@@ -43,6 +55,11 @@ set-option -g history-limit 32768
 bind-key P command-prompt -p 'save scrollback history to filename:' 'capture-pane -S -32768 ; save-buffer %1 ; delete-buffer'
 # Same as above but with a default value for filename.
 #bind-key P command-prompt -p 'save scrollback history to filename:' -I '~/tmux-pane.scrollback' 'capture-pane -S -32768 ; save-buffer %1 ; delete-buffer'
+
+
+# Set a softer navigation bar color scheme incase powerline isn't working.
+set -g status-bg '#666666'
+set -g status-fg '#aaaaaa'
 
 
 # Add pretty powerline status
