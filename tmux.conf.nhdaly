@@ -15,6 +15,10 @@ bind C-h send-prefix
 # add mouse support (pane resizing, pane selecting, window select -- no scroll)
 set-option -g mouse on
 
+# Remove the annoying scroll over the status bar to change windows.
+unbind-key -n WheelUpStatus
+unbind-key -n WheelDownStatus
+
 # See also tmux-scroll-copy-mode plugin below to restore pre-2.1 tmux
 # scroll-starts-copy-mode settings.
 
@@ -73,7 +77,6 @@ bind -r > resize-pane -R 1
 bind -r - resize-pane -D 1
 bind -r + resize-pane -U 1
 
-
 # Max scrollback for an int16. I'm not sure if this is actually the max
 # possible, but it's pretty huge and I saw this online somewhere else.
 set-option -g history-limit 32768
@@ -85,7 +88,7 @@ bind-key P command-prompt -p 'save scrollback history to filename:' 'capture-pan
 
 
 # Set a softer navigation bar color scheme incase powerline isn't working.
-set -g status-bg '#666666'
+set -g status-bg '#111111'
 set -g status-fg '#aaaaaa'
 
 
