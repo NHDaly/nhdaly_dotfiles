@@ -66,6 +66,7 @@ bind -r j select-pane -D
 bind -r k select-pane -U
 bind -r l select-pane -R
 
+bind-key b last-window  # For "back". Default is 'l' for "last".
 bind-key S source ~/.tmux.conf
 
 
