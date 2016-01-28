@@ -76,6 +76,13 @@ bindkey "[3~" vi-delete-char # fn-delete should delete forward.
 
 export MANPATH="/usr/local/man:$MANPATH"
 
+# ------- ZSH Customizations ----------------------------
+
+function _reset-prompt-and-accept-line {
+  zle reset-prompt
+  zle .accept-line
+}
+zle -N accept-line _reset-prompt-and-accept-line
 
 # ======= THEME ======================================================
 

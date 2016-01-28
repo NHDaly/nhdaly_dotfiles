@@ -127,6 +127,10 @@ set -g @resurrect-capture-pane-contents 'on'
 # for vim
 set -g @resurrect-strategy-vim 'session'
 
+# Continuous saving of tmux resurrect state.
+#set -g @plugin 'tmux-plugins/tmux-continuum'
+#set -g @continuum-restore 'on'
+
 set -g @plugin 'nhdaly/tmux-scroll-copy-mode'
 #set -g @plugin '/Users/nhdaly/src/tmux-scroll-copy-mode'
 set -g @scroll-without-changing-pane 'on' # change from tmux v2.0.
@@ -138,7 +142,7 @@ bind-key C run-shell ~/.tmux/plugins/tpm/bin/clean_plugins
 
 # === !! Auto-install tpm if it hasn't been installed already !! ===
 if "test ! -d ~/.tmux/plugins/tpm" \
-	   "run 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm'"
+     "run 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm'"
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
