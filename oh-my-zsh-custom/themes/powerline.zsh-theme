@@ -103,13 +103,10 @@ ZSH_THEME_GIT_PROMPT_DIVERGED=" ⬍"
     fi
 # fi
 
-if [ $(id -u) -eq 0 ]; then
-    POWERLINE_SEC1_BG=%K{red}
-    POWERLINE_SEC1_FG=%F{red}
-else
-    POWERLINE_SEC1_BG=%K{green}
-    POWERLINE_SEC1_FG=%F{green}
-fi
+# Set the Background color of first section based on exit code.
+POWERLINE_SEC1_BG=%(?.%K{green}.%K{red})
+POWERLINE_SEC1_FG=%(?.%F{green}.%F{red})
+
 POWERLINE_SEC1_TXT=%F{black}
 if [ "$POWERLINE_DETECT_SSH" != "" ]; then
   if [ -n "$SSH_CLIENT" ]; then
