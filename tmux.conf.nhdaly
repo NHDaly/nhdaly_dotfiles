@@ -95,7 +95,8 @@ set -g status-fg '#aaaaaa'
 
 # Add pretty powerline status
 run-shell "powerline-daemon -q"
-source "/usr/local/lib/python2.7/dist-packages/powerline/bindings/tmux/powerline.conf"
+if "test -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/tmux/powerline.conf" \
+  "source '/usr/local/lib/python2.7/dist-packages/powerline/bindings/tmux/powerline.conf'" "source '/usr/local/lib/python2.7/site-packages/powerline/bindings/tmux/powerline.conf'"
 
 ## ======= Tmux Plugin Manager =================================================
 # List of plugins
@@ -133,6 +134,7 @@ set -g @resurrect-strategy-vim 'session'
 
 set -g @plugin 'nhdaly/tmux-scroll-copy-mode'
 #set -g @plugin '/Users/nhdaly/src/tmux-scroll-copy-mode'
+#set -g @plugin '/Users/Daly/Documents/Developer/plugins/tmux_scroll_copy_mode'
 set -g @scroll-without-changing-pane 'on' # change from tmux v2.0.
 set -g @scroll-speed-num-lines-per-scroll 2 # change from tmux v2.0.
 set -g @prevent-scroll-for-fullscreen-alternate-buffer 'on' # change from tmux v2.0.
