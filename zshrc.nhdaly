@@ -96,7 +96,7 @@ POWERLINE_NO_BLANK_LINE="true"
 POWERLINE_HOME_CURRENT_PATH="true"
 
 host_name=`hostname -s`
-HOST_SYMBOL=`cat ~/dotfiles/nhdaly/hosts/hostnames | grep $host_name | sed -e "s/^.* //"`
+HOST_SYMBOL=`cat ~/dotfiles/nhdaly/hosts/hostnames | grep "$host_name " | sed -e "s/^.* //"`
 echo $HOST_SYMBOL
 # Make sure you do all theme customization before this line.
 source $ZSH/oh-my-zsh.sh
