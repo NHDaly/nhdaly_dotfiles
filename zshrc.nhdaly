@@ -26,12 +26,16 @@ DISABLE_AUTO_TITLE="true"
 # much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+# Set all oh-my-zsh settings before this line.
 antigen use oh-my-zsh
 
 # Oh-my-zsh plugins
 antigen bundle git
 antigen bundle pip
 antigen bundle vi-mode
+
+# Load all antigen bundles before this line.
+antigen apply
 
 # ==== vi-mode settings ====
 bindkey "" history-incremental-search-backward
