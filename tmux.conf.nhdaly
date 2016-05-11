@@ -111,6 +111,7 @@ set -g status-right "#[fg=green]#(tmux-mem-cpu-load --colors --powerline-right -
 # prefix + I - install these plugins.
 # prefix + U - update these plugins.
 set -g @plugin 'tmux-plugins/tpm'
+#set -g @plugin '/Users/Daly/src/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 
 # Follow this style:
@@ -145,7 +146,7 @@ set -g @plugin 'nhdaly/tmux-scroll-copy-mode'
 #set -g @plugin '/Users/Daly/Documents/Developer/plugins/tmux_scroll_copy_mode'
 set -g @scroll-without-changing-pane 'on' # change from tmux v2.0.
 set -g @scroll-speed-num-lines-per-scroll 2 # change from tmux v2.0.
-set -g @prevent-scroll-for-fullscreen-alternate-buffer 'on' # change from tmux v2.0.
+set -g @emulate-scroll-for-no-mouse-alternate-buffer 'on' # change from tmux v2.0.
 
 # The default clean-plugins binding doesn't work for me on iTerm.
 bind-key C run-shell ~/.tmux/plugins/tpm/bin/clean_plugins

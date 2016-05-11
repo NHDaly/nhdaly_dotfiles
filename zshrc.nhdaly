@@ -26,6 +26,7 @@ DISABLE_AUTO_TITLE="true"
 # much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+# Set all oh-my-zsh settings before this line.
 antigen use oh-my-zsh
 
 # ----- Other Antigen Plugins -----------------
@@ -42,7 +43,10 @@ antigen bundle thewtex/tmux-mem-cpu-load
 # Adds better vi-mode command support to zsh.
 antigen bundle hchbaw/opp.zsh
 
-# ==== vi-mode settings =========================
+# Load all antigen bundles before this line.
+antigen apply
+
+# ==== vi-mode settings ====
 bindkey "" history-incremental-search-backward
 bindkey -M vicmd "s" vi-cmd-mode # Turn off subsitute (make it a noop).
 bindkey "[3~" vi-delete-char # fn-delete should delete forward.
@@ -125,6 +129,8 @@ alias gamd="git commit --amend"
 alias gg="gitg &>/dev/null &"
 alias gga="gitg --all &>/dev/null &"
 alias ggl="gitg --local &>/dev/null &"
+
+alias ll="ls -alh"
 
 alias cdf="~/dotfiles/nhdaly/scripts/cdiffer_sxs.sh"
 
