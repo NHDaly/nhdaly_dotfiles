@@ -96,7 +96,15 @@ set -g status-fg '#aaaaaa'
 # Add pretty powerline status
 run-shell "powerline-daemon -q"
 if "test -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/tmux/powerline.conf" \
-  "source '/usr/local/lib/python2.7/dist-packages/powerline/bindings/tmux/powerline.conf'" "source '/usr/local/lib/python2.7/site-packages/powerline/bindings/tmux/powerline.conf'"
+  "source '/usr/local/lib/python2.7/dist-packages/powerline/bindings/tmux/powerline.conf'" \
+  "source '/usr/local/lib/python2.7/site-packages/powerline/bindings/tmux/powerline.conf'"
+
+# Override the right-status with memory
+set -g status-interval 2
+set -g status-right "#[fg=green]#(tmux-mem-cpu-load --colors --powerline-right --interval 2)#[default]"
+
+#set -g status-interval 2
+#set -g status-right "#S #[fg=green]#(tmux-mem-cpu-load --colors --powerline-right --interval 2)#[default]#(powerline tmux right -p custom-powerline)"
 
 ## ======= Tmux Plugin Manager =================================================
 # List of plugins
