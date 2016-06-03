@@ -19,7 +19,7 @@ echo "
 
 # Also you'll need to install Antigen, our zsh package manager:
 mkdir -p ~/bin
-stat ~/bin/antigen.zsh || curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > ~/bin/antigen.zsh
+stat ~/bin/antigen/antigen.zsh || git clone https://github.com/zsh-users/antigen.git ~/bin/antigen
 
 # And Vundle:
 stat ~/.vim/bundle/Vundle.vim/README.md || git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim

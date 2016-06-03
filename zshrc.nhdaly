@@ -1,6 +1,6 @@
 # This file uses Antigen as its main zsh package manager.
 # See https://github.com/zsh-users/antigen
-source ~/bin/antigen.zsh
+source ~/bin/antigen/antigen.zsh
 
 # ===== iTerm =======
 
