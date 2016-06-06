@@ -179,7 +179,10 @@ nnoremap <S-tab> %
 vnoremap <S-tab> %
 " }}}
 
+nnoremap <C-Y> :set invpaste paste?<CR>
 set pastetoggle=<C-Y>
+set showmode
+
 set number "show line numbers. ... duh?
 set splitright "VSplit windows to the right of the current window.
 
