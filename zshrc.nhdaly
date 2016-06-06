@@ -50,6 +50,9 @@ antigen apply
 bindkey "" history-incremental-search-backward
 bindkey -M vicmd "s" vi-cmd-mode # Turn off subsitute (make it a noop).
 bindkey "[3~" vi-delete-char # fn-delete should delete forward.
+
+# Unbind the escape-/ binding because it gets triggered when I try to do a history search with "/".
+bindkey -r "/"
 # ==== end vi-mode settings ====
 
 export MANPATH="/usr/local/man:$MANPATH"
