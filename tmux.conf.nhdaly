@@ -55,28 +55,23 @@ set-option -g default-shell /bin/zsh
 #bind-key s command-prompt -p "send pane to:"  "join-pane -t '%%'"
 
 # Bind keys to resize windows like vim.
-bind -r < resize-pane -L 2
-bind -r > resize-pane -R 2
-bind -r - resize-pane -D 2
-bind -r + resize-pane -U 2
-
-# Bind keys to navigate windows like vim.
-bind -r h select-pane -L
-bind -r j select-pane -D
-bind -r k select-pane -U
-bind -r l select-pane -R
-
-bind-key b last-window  # For "back". Default is 'l' for "last".
-bind-key S source ~/.tmux.conf
-
-
-# resize panes like vim
-# feel free to change the "1" to however many lines you want to resize by, only
-# one at a time can be slow
+# Feel free to change the "1" to however many lines you want to resize by, but
+# note that one at a time can be slow
 bind -r < resize-pane -L 1
 bind -r > resize-pane -R 1
 bind -r - resize-pane -D 1
 bind -r + resize-pane -U 1
+
+# Bind keys to navigate windows like vim.
+# I've chosen to require <prefix> between each navigation (removing "-r").
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+bind-key b last-window  # For "back". Default is 'l' for "last".
+bind-key S source ~/.tmux.conf
+
 
 # Max scrollback for an int16. I'm not sure if this is actually the max
 # possible, but it's pretty huge and I saw this online somewhere else.
