@@ -90,13 +90,10 @@ antigen theme ~/dotfiles/nhdaly/custom-zsh/themes powerline --no-local-clone
 # export LANG=en_US.UTF-8
 
 # Vi mode
+# Use vim-style key-bindings for the zsh commandline prompt!
 bindkey -v
 
 export EDITOR='vim'
-
-
-# Use vim-style key-bindings for the zsh commandline prompt!
-bindkey -v
 
 
 # Preferred editor for local and remote sessions
@@ -136,12 +133,15 @@ alias ll="ls -alh"
 
 alias cdf="~/dotfiles/nhdaly/scripts/cdiffer_sxs.sh"
 
+
+# ==== Other settings ===================
+
 # write-through history
 setopt incappendhistory
 unsetopt sharehistory
 #export HISTFILE=~/tmp_history_file.history
 # Save all the data!
-export HISTSIZE=2147483648  # 2 GiB (note each entry might be like 100 bytes)
+export HISTSIZE=2147483648  # 2^31 lines (note each entry might be like 100 bytes)
 export SAVEHIST=2147483648
 
 export PATH=$PATH:~/dotfiles/nhdaly/scripts
