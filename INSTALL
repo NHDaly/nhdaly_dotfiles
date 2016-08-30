@@ -8,14 +8,14 @@ ln -s ~/dotfiles/nhdaly/zshrc.nhdaly ~/.zshrc && \
 ln -s ~/dotfiles/nhdaly/vimrc.nhdaly ~/.vimrc && \
 ln -s ~/dotfiles/nhdaly/vim ~/.vim && \
 ln -s ~/dotfiles/nhdaly/tmux.conf.nhdaly ~/.tmux.conf || \
-echo "
+(echo "
 # Failed to install. If you're confident about it, you can erase those
 # pre-existing files with these commands:
 # rm -rf ~/.vim
 # rm ~/.vimrc
 # rm ~/.zshrc
 # rm ~/.tmux.conf
-" && exit 1
+" && exit 1)
 
 # Also you'll need to install Antigen, our zsh package manager:
 mkdir -p ~/bin
