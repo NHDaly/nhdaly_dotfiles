@@ -37,8 +37,6 @@ antigen bundle pip
 antigen bundle python
 antigen bundle vi-mode
 
-antigen bundle thewtex/tmux-mem-cpu-load
-
 # Note: Obsolete after zsh 5.0.8!
 # Adds better vi-mode command support to zsh.
 antigen bundle hchbaw/opp.zsh
