@@ -32,7 +32,6 @@ unbind-key -n WheelDownStatus
 #set -g mouse-resize-pane on
 
 
-
 # Open new panes in the same CWD as the current pane.
 bind % split-window -h -c "#{pane_current_path}"
 bind '"' split-window -v -c "#{pane_current_path}"
@@ -91,12 +90,6 @@ set -g status-fg '#aaaaaa'
 run-shell "powerline-daemon -q"
 run 'PYTHON_PACKAGES=$(pip show powerline-status | grep Location: | sed "s/Location: //"); tmux source "$PYTHON_PACKAGES/powerline/bindings/tmux/powerline.conf"'
 
-# Override the right-status with memory
-set -g status-interval 2
-set -g status-right "#[fg=green]#(tmux-mem-cpu-load --colors --powerline-right --interval 2)#[default]"
-
-#set -g status-interval 2
-#set -g status-right "#S #[fg=green]#(tmux-mem-cpu-load --colors --powerline-right --interval 2)#[default]#(powerline tmux right -p custom-powerline)"
 
 ## ======= Tmux Plugin Manager =================================================
 # List of plugins
@@ -110,6 +103,10 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 # set -g @plugin 'github_username/plugin_name'
 # set -g @plugin 'git@bitbucket.com/user/plugin'
 
+# Override the right-status with memory (in powerline format).
+set -g status-interval 2
+set -g status-right "#[fg=green]#($TMUX_PLUGIN_MANAGER_PATH/tmux-mem-cpu-load/tmux-mem-cpu-load --colors --powerline-right --interval 2)#[default]"
+set -g @plugin 'thewtex/tmux-mem-cpu-load'
 
 # Enables C-b u to open any url printed to the screen. Awesome.
 # Note, you must install the urlview binary separately (brew, apt-get, etc.).
@@ -130,7 +127,7 @@ set -g @resurrect-capture-pane-contents 'on'
 set -g @resurrect-strategy-vim 'session'
 
 # Continuous saving of tmux resurrect state.
-#set -g @plugin 'tmux-plugins/tmux-continuum'
+set -g @plugin 'tmux-plugins/tmux-continuum'
 #set -g @continuum-restore 'on'
 
 set -g @plugin 'nhdaly/tmux-scroll-copy-mode'
@@ -142,6 +139,7 @@ set -g @emulate-scroll-for-no-mouse-alternate-buffer 'on' # change from tmux v2.
 
 # The default clean-plugins binding doesn't work for me on iTerm.
 bind-key C run-shell ~/.tmux/plugins/tpm/bin/clean_plugins
+
 
 # === !! Auto-install tpm if it hasn't been installed already !! ===
 if "test ! -d ~/.tmux/plugins/tpm" \
