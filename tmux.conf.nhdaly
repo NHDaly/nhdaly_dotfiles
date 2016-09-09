@@ -103,7 +103,7 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 # set -g @plugin 'github_username/plugin_name'
 # set -g @plugin 'git@bitbucket.com/user/plugin'
 
-# Override the right-status with memory (in powerline format).
+# Override the right-status with memory and cpu usage (in powerline format).
 set -g status-interval 2
 set -g status-right "#[fg=green]#($TMUX_PLUGIN_MANAGER_PATH/tmux-mem-cpu-load/tmux-mem-cpu-load --colors --powerline-right --interval 2)#[default]"
 set -g @plugin 'thewtex/tmux-mem-cpu-load'
