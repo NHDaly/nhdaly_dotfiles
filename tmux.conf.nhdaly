@@ -87,12 +87,9 @@ bind-key P command-prompt -p 'save scrollback history to filename:' 'capture-pan
 set -g status-bg '#111111'
 set -g status-fg '#aaaaaa'
 
-
 # Add pretty powerline status
 run-shell "powerline-daemon -q"
-if "test -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/tmux/powerline.conf" \
-  "source '/usr/local/lib/python2.7/dist-packages/powerline/bindings/tmux/powerline.conf'" \
-  "source '/usr/local/lib/python2.7/site-packages/powerline/bindings/tmux/powerline.conf'"
+run 'PYTHON_PACKAGES=$(pip show powerline-status | grep Location: | sed "s/Location: //"); tmux source "$PYTHON_PACKAGES/powerline/bindings/tmux/powerline.conf"'
 
 # Override the right-status with memory
 set -g status-interval 2
