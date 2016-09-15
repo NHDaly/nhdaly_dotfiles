@@ -27,7 +27,8 @@ DISABLE_AUTO_TITLE="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Set all oh-my-zsh settings before this line.
-antigen use oh-my-zsh
+antigen bundle robbyrussell/oh-my-zsh lib/
+
 
 # ----- Other Antigen Plugins -----------------
 
