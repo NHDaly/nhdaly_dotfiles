@@ -1,0 +1,22 @@
+#!/bin/bash
+
+function show_help() {
+    echo "Usage: imgless [-p] filename ..." 1>& 2
+    echo "   or: cat filename | imgless" 1>& 2
+}
+
+## Main
+
+if [ -t 0 ]; then
+    has_stdin=f
+else
+    has_stdin=t
+fi
+
+if [ $has_stdin = f -a $# -eq 0 ]; then
+    show_help
+    exit
+fi
+
+CURRENT_DIR="$( dirname "$0" )"
+"$CURRENT_DIR"/imgcat $@ | less --raw-control-chars
