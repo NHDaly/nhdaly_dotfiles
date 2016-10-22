@@ -1,5 +1,6 @@
 " Because who needs vi?
 set nocompatible
+let g:running_at_work=1
 
 let mapleader = ","
 
