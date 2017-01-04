@@ -45,7 +45,7 @@ if [ ! -t 0 ]; then
 
 # spawn editor with stdio connected
 
-${EDITOR} $t < /dev/tty > /dev/tty || exit $?
+${EDITOR} "$@" $t < /dev/tty > /dev/tty || exit $?
 
 # write to stdout
 
