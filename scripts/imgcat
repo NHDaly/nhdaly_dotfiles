@@ -29,8 +29,10 @@ function print_st() {
 function print_image() {
     print_osc
     printf '1337;File='
+    TMUX_IMG_HEIGHT=''
     if [[ -n "$1" ]]; then
       printf 'name='`printf "%s" "$1" | base64`";"
+      TMUX_IMG_HEIGHT=`identify -format "%h" "$1"`
     fi
 
     VERSION=$(base64 --version 2>&1)
@@ -50,6 +52,14 @@ function print_image() {
     printf '\n'
     if [[ -n "$4" ]]; then
       echo $1
+    fi
+
+    if [ $TERM = "screen*" ] || [ $TERM = "tmux*" ] || [ -n "$TMUX" ]; then
+      #Print one end-line per image pixel / estimated current font size.
+      #NUM_LINES=$(($TMUX_IMG_HEIGHT / 8))
+      #printf "%"$NUM_LINES"s" | tr " " "\n"
+      # INSTEAD: Just always clear the terminal.
+      printf ""
     fi
 }
 
