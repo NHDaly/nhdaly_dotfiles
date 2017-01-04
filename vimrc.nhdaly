@@ -43,7 +43,7 @@ let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 hi cppSTLnamespace ctermfg=10
 
-" For 'better c++ vim highlighting'
+" Lets you swap windows with <leader>ww
 let g:windowswap_map_keys = 0 "prevent default bindings
 "nnoremap <silent> <leader>yw :call WindowSwap#MarkWindowSwap()<CR>
 "nnoremap <silent> <leader>pw :call WindowSwap#DoWindowSwap()<CR>
@@ -53,11 +53,27 @@ Plugin 'wesQ3/vim-windowswap'
 " For haskell highlighting
 Plugin 'neovimhaskell/haskell-vim'
 
+" Adds command operations that surround text objects.
+Plugin 'tpope/vim-surround'
+
+" Adds '.' repeat support to plugin mapped commands (like surround above).
+Plugin 'tpope/vim-repeat'
+
 " For vim + git!
 Plugin 'tpope/vim-fugitive'
 
 " Let you restore a vim session with ":Obsess"
 Plugin 'tpope/vim-obsession'
+
+
+"" -- Productivity Plugins! ---------
+"" Org-Mode: A ToDo list for the rest of us!?
+"Plugin 'jceb/vim-orgmode'
+"
+""  Lets you increase/decrease dates w/ ctrl-a and ctrl-x (like numbers).
+"Plugin 'vim-scripts/speeddating.vim'
+"
+"" -- End Productivity Plugins ------
 
 " ------- End Vundle Plugins -------------------------
 
@@ -259,6 +275,7 @@ augroup END
 
 " <leader>g does a grep search for the word under the cursor in this dir.
 :nnoremap <leader>g :execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
+
 
 ""========= END MY ADDITIONS ============ }}}
 
