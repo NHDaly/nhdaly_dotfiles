@@ -61,12 +61,20 @@ bind -r > resize-pane -R 1
 bind -r - resize-pane -D 1
 bind -r + resize-pane -U 1
 
-# Bind keys to navigate windows like vim.
+# Smart pane switching with awareness of Vim splits.
+# # See: https://github.com/christoomey/vim-tmux-navigator
+# Use keys similar to navigating windows in vim.
 # I've chosen to require <prefix> between each navigation (removing "-r").
-bind h select-pane -L
-bind j select-pane -D
-bind k select-pane -U
-bind l select-pane -R
+is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
+     | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
+bind-key h if-shell "$is_vim" "send-keys C-h h"  "select-pane -L"
+bind-key j if-shell "$is_vim" "send-keys C-h j"  "select-pane -D"
+bind-key k if-shell "$is_vim" "send-keys C-h k"  "select-pane -U"
+bind-key l if-shell "$is_vim" "send-keys C-h l"  "select-pane -R"
+# Note this one needs to be escaped weirdly cause tmux interprets the ; as
+# ending a statement.
+bind-key \; if-shell "$is_vim" "send-keys '\\\;'"  "last-pane"
+
 
 bind-key b last-window  # For "back". Default is 'l' for "last".
 bind-key S source ~/.tmux.conf

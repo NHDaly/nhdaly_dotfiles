@@ -1,6 +1,5 @@
 " Because who needs vi?
 set nocompatible
-let g:running_at_work=1
 
 let mapleader = ","
 
@@ -64,6 +63,17 @@ Plugin 'tpope/vim-fugitive'
 
 " Let you restore a vim session with ":Obsess"
 Plugin 'tpope/vim-obsession'
+
+" *Use same key commands to navigate vim as tmux!*
+Plugin 'christoomey/vim-tmux-navigator'
+
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-h>h :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-h>j :TmuxNavigateDown<cr>
+nnoremap <silent> <C-h>k :TmuxNavigateUp<cr>
+nnoremap <silent> <C-h>l :TmuxNavigateRight<cr>
+nnoremap <silent> <C-h>; :TmuxNavigatePrevious<cr>
+
 
 
 "" -- Productivity Plugins! ---------
