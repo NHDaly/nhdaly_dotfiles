@@ -145,8 +145,11 @@ export SAVEHIST=2147483648
 
 export PATH=$PATH:~/dotfiles/nhdaly/scripts
 
+# Turn off the weird new bracketed paste, which still doesn't quite work
+# everywhere for me.
+(( $+TMUX )) && unset zle_bracketed_paste
+
 # Load bashrc so bash and zsh stay in sync.
 source ~/.bashrc
-
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
