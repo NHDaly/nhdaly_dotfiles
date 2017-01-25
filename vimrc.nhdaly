@@ -108,17 +108,7 @@ filetype plugin indent on    " required
 "" --------- VimBall --------------- {{{
 
 " CamelCaseMotion: http://www.vim.org/scripts/script.php?script_id=1905
-" Use <shift>key instead of ,key.
-map W <Plug>CamelCaseMotion_w
-map B <Plug>CamelCaseMotion_b
-map E <Plug>CamelCaseMotion_e
-
-" Match default behavior and don't include trailing whitespace on cW/iW.
-nmap cW cE
-" Must define the default mappings first in order to change them.
 runtime plugin/camelcasemotion.vim
-omap iW iE
-xmap iW iE
 
 "" ----- End VimBall --------------- }}}
 
