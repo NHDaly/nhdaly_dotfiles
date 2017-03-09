@@ -68,11 +68,24 @@ Plugin 'tpope/vim-obsession'
 Plugin 'christoomey/vim-tmux-navigator'
 
 let g:tmux_navigator_no_mappings = 1
+" Normal Mode mappings
 nnoremap <silent> <C-h>h :TmuxNavigateLeft<cr>
 nnoremap <silent> <C-h>j :TmuxNavigateDown<cr>
 nnoremap <silent> <C-h>k :TmuxNavigateUp<cr>
 nnoremap <silent> <C-h>l :TmuxNavigateRight<cr>
 nnoremap <silent> <C-h>; :TmuxNavigatePrevious<cr>
+" Insert Mode mappings (note that the 'a' re-enters insert-mode.
+inoremap <silent> <C-h>h <Esc>:TmuxNavigateLeft<cr>a
+inoremap <silent> <C-h>j <Esc>:TmuxNavigateDown<cr>a
+inoremap <silent> <C-h>k <Esc>:TmuxNavigateUp<cr>a
+inoremap <silent> <C-h>l <Esc>:TmuxNavigateRight<cr>a
+inoremap <silent> <C-h>; <Esc>:TmuxNavigatePrevious<cr>a
+" Visual Mode mappings (note that the 'gv' re-enters visual-mode.
+vnoremap <silent> <C-h>h <Esc>:TmuxNavigateLeft<cr>gv
+vnoremap <silent> <C-h>j <Esc>:TmuxNavigateDown<cr>gv
+vnoremap <silent> <C-h>k <Esc>:TmuxNavigateUp<cr>gv
+vnoremap <silent> <C-h>l <Esc>:TmuxNavigateRight<cr>gv
+vnoremap <silent> <C-h>; <Esc>:TmuxNavigatePrevious<cr>gv
 
 
 
