@@ -153,3 +153,9 @@ export PATH=$PATH:~/dotfiles/nhdaly/scripts
 source ~/.bashrc
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# ----------- Maintain Conda environments when I open a new shell. ------------
+if test "$TMUX_NEW_CONDA_ENV" ; then
+  source activate "$TMUX_NEW_CONDA_ENV"
+fi
+

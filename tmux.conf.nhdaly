@@ -32,11 +32,11 @@ unbind-key -n WheelDownStatus
 #set -g mouse-resize-pane on
 
 
-# Open new panes in the same CWD as the current pane.
-bind % split-window -h -c "#{pane_current_path}"
-bind '"' split-window -v -c "#{pane_current_path}"
+# Open new panes in the same CWD as the current pane, and with the same Conda environments.
+bind % run-shell  '~/dotfiles/nhdaly/scripts/tmux_split_window_conda.sh -h -c "#{pane_current_path}"'
+bind '"' run-shell  '~/dotfiles/nhdaly/scripts/tmux_split_window_conda.sh -v -c "#{pane_current_path}"'
 
-# TODO(nhdaly): Do I want this behavior for new windows?
+# TODO(nhdaly): Do I want that same behavior for new windows?
 # bind c new-window -c "#{pane_current_path}"
 
 
