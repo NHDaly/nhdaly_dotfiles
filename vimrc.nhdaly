@@ -26,6 +26,8 @@ else
   " YouCompleteMe -- Auto Completions
   Plugin 'valloric/YouCompleteMe'
   let g:ycm_extra_conf_globlist = ['~/.ycm_extra_conf.py']
+  " Set to default python so it still works inside conda.
+  let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 
   " For code formatting! TODO(nhdaly): Turn this on. Should be cool!
   " Add maktaba and codefmt to the runtimepath.
