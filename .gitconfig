@@ -1,0 +1,2 @@
+[diff "applescript"]
+	textconv = osadecompile
