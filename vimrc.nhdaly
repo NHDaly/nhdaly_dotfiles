@@ -77,17 +77,41 @@ nnoremap <silent> <C-h>k :TmuxNavigateUp<cr>
 nnoremap <silent> <C-h>l :TmuxNavigateRight<cr>
 nnoremap <silent> <C-h>; :TmuxNavigatePrevious<cr>
 " Insert Mode mappings (note that the 'a' re-enters insert-mode.
-inoremap <silent> <C-h>h <Esc>:TmuxNavigateLeft<cr>a
-inoremap <silent> <C-h>j <Esc>:TmuxNavigateDown<cr>a
-inoremap <silent> <C-h>k <Esc>:TmuxNavigateUp<cr>a
-inoremap <silent> <C-h>l <Esc>:TmuxNavigateRight<cr>a
-inoremap <silent> <C-h>; <Esc>:TmuxNavigatePrevious<cr>a
+inoremap <silent> <C-h>h <C-o>:TmuxNavigateLeft<cr>
+inoremap <silent> <C-h>j <C-o>:TmuxNavigateDown<cr>
+inoremap <silent> <C-h>k <C-o>:TmuxNavigateUp<cr>
+inoremap <silent> <C-h>l <C-o>:TmuxNavigateRight<cr>
+inoremap <silent> <C-h>; <C-o>:TmuxNavigatePrevious<cr>
 " Visual Mode mappings (note that the 'gv' re-enters visual-mode.
 vnoremap <silent> <C-h>h <Esc>:TmuxNavigateLeft<cr>gv
 vnoremap <silent> <C-h>j <Esc>:TmuxNavigateDown<cr>gv
 vnoremap <silent> <C-h>k <Esc>:TmuxNavigateUp<cr>gv
 vnoremap <silent> <C-h>l <Esc>:TmuxNavigateRight<cr>gv
 vnoremap <silent> <C-h>; <Esc>:TmuxNavigatePrevious<cr>gv
+" Command Mode mappings. Oh boy. To execute the command and not modify the
+" current cmdline, you need this function and <C-R>= mappings, which insert the
+" value returned from the function (in this case "") at that place in the
+" command line.
+function! CmdModeTmuxNavigate(cmd)
+  if a:cmd ==? "h"
+    silent! execute "TmuxNavigateLeft"
+  elseif a:cmd ==? "j"
+    silent! execute "TmuxNavigateDown"
+  elseif a:cmd ==? "k"
+    silent! execute "TmuxNavigateUp"
+  elseif a:cmd ==? "l"
+    silent! execute "TmuxNavigateRight"
+  elseif a:cmd ==? ";"
+    silent! execute "TmuxNavigatePrevious"
+  endif
+  return ""
+endfunction
+
+cnoremap <silent> <C-h>h <C-R>=CmdModeTmuxNavigate("h")<CR>
+cnoremap <silent> <C-h>j <C-R>=CmdModeTmuxNavigate("j")<CR>
+cnoremap <silent> <C-h>k <C-R>=CmdModeTmuxNavigate("k")<CR>
+cnoremap <silent> <C-h>l <C-R>=CmdModeTmuxNavigate("l")<CR>
+cnoremap <silent> <C-h>; <C-R>=CmdModeTmuxNavigate(";")<CR>
 
 
 
