@@ -22,6 +22,7 @@ ln -s ~/dotfiles/nhdaly/iterm2_shell_integration.zsh ~/.iterm2_shell_integration
 # Also you'll need to install Antigen, our zsh package manager:
 mkdir -p ~/bin
 stat ~/bin/antigen/antigen.zsh || git clone https://github.com/zsh-users/antigen.git ~/bin/antigen
+(cd ~/bin/antigen && git checkout v1.2.1)  # I had issues with the latest version of antigen.
 
 # And Vundle:
 stat ~/.vim/bundle/Vundle.vim/README.md || git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
