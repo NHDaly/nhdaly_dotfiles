@@ -127,9 +127,10 @@ set-window-option -g mode-keys vi
 bind-key -t vi-copy 'v' begin-selection
 bind-key -t vi-copy 'y' copy-selection
 
-# prefix + Ctrl-s - save
 # prefix + Ctrl-r - restore
 set -g @plugin 'tmux-plugins/tmux-resurrect'
+# Disable prefix + Ctrl-s - save (Cause i accidentally hit it when i mean to hit restore sometimes.)
+set -g @resurrect-save '--nothing--'
 set -g @resurrect-capture-pane-contents 'on'
 # for vim
 set -g @resurrect-strategy-vim 'session'
