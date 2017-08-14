@@ -158,4 +158,3 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 if test "$TMUX_NEW_CONDA_ENV" ; then
   source activate "$TMUX_NEW_CONDA_ENV"
 fi
-

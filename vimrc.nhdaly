@@ -219,6 +219,9 @@ set showmatch "Highlight matching parens
 " Note -- this seems to be enabled even without this line...
 set hidden "Allow leaving unsaved buffers to switch windows.
 
+" Allow editing compiled java files, by treating them as .zip files.
+au BufRead *.srcjar set filetype=zip
+
 "---- Search settings ------ {{{
 "Set vim to use Perl-like regexes instead of Vim-style
 "nnoremap / /\v
@@ -235,8 +238,8 @@ nnoremap <S-tab> %
 vnoremap <S-tab> %
 " }}}
 
-nnoremap <C-Y> :set invpaste paste?<CR>
-set pastetoggle=<C-Y>
+ nnoremap <F10> :set invpaste paste?<CR>
+set pastetoggle=<F10>
 set showmode
 
 set number "show line numbers. ... duh?
@@ -317,6 +320,7 @@ augroup END
 
 
 ""========= END MY ADDITIONS ============ }}}
+
 
 ""========= Starter Vimrc ============ {{{
 " An example for a vimrc file.
