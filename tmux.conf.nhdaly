@@ -98,8 +98,8 @@ set -g status-bg '#111111'
 set -g status-fg '#aaaaaa'
 
 # Add pretty powerline status
-run-shell "powerline-daemon -q"
-run 'PYTHON_PACKAGES=$(pip show powerline-status | grep Location: | sed "s/Location: //"); tmux source "$PYTHON_PACKAGES/powerline/bindings/tmux/powerline.conf"'
+# run-shell "powerline-daemon -q"
+# run 'PYTHON_PACKAGES=$(pip show powerline-status | grep Location: | sed "s/Location: //"); tmux source "$PYTHON_PACKAGES/powerline/bindings/tmux/powerline.conf"'
 
 
 ## ======= Tmux Plugin Manager =================================================

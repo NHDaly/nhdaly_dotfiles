@@ -1,30 +1,14 @@
-start_escape_code() {
-  if [ $TERM = "screen*" ] || [ $TERM = "tmux*" ] || [ -n "$TMUX" ]; then
-    echo "\033Ptmux;\033\033"
-  else
-    echo "\033"
-  fi
-}
-
-end_escape_code() {
-  if [ $TERM = "screen*" ] || [ $TERM = "tmux*" ] || [ -n "$TMUX" ]; then
-    echo "\007\033\\"
-  else
-    echo "\007"
-  fi
-}
-
 if [[ -o interactive ]]; then
-  if [ "$ITERM_SHELL_INTEGRATION_INSTALLED" = "" ]; then
+  if [ "$TERM" != "screen" -a "$ITERM_SHELL_INTEGRATION_INSTALLED" = "" ]; then
     ITERM_SHELL_INTEGRATION_INSTALLED=Yes
     ITERM2_SHOULD_DECORATE_PROMPT="1"
     # Indicates start of command output. Runs just before command executes.
     iterm2_before_cmd_executes() {
-      printf "`start_escape_code`]133;C;`end_escape_code`"
+      printf "\033]133;C;\007"
     }
 
     iterm2_set_user_var() {
-      printf "`start_escape_code`]1337;SetUserVar=%s=%s`end_escape_code`" "$1" $(printf "%s" "$2" | base64 | tr -d '\n')
+      printf "\033]1337;SetUserVar=%s=%s\007" "$1" $(printf "%s" "$2" | base64 | tr -d '\n')
     }
 
     # Users can write their own version of this method. It should call
@@ -39,25 +23,25 @@ if [[ -o interactive ]]; then
     fi
 
     iterm2_print_state_data() {
-      printf "`start_escape_code`]1337;RemoteHost=%s@%s`end_escape_code`" "$USER" "$iterm2_hostname"
-      printf "`start_escape_code`]1337;CurrentDir=%s`end_escape_code`" "$PWD"
+      printf "\033]1337;RemoteHost=%s@%s\007" "$USER" "$iterm2_hostname"
+      printf "\033]1337;CurrentDir=%s\007" "$PWD"
       iterm2_print_user_vars
     }
 
     # Report return code of command; runs after command finishes but before prompt
     iterm2_after_cmd_executes() {
-      printf "`start_escape_code`]133;D;%s`end_escape_code`" "$STATUS"
+      printf "\033]133;D;%s\007" "$STATUS"
       iterm2_print_state_data
     }
 
     # Mark start of prompt
-    iterm2_prompt_start() {
-      printf "`start_escape_code`]133;A`end_escape_code`"
+    iterm2_prompt_mark() {
+      printf "\033]133;A\007"
     }
 
     # Mark end of prompt
     iterm2_prompt_end() {
-      printf "`start_escape_code`]133;B`end_escape_code`"
+      printf "\033]133;B\007"
     }
 
     # There are three possible paths in life.
@@ -105,7 +89,12 @@ if [[ -o interactive ]]; then
       ITERM2_SHOULD_DECORATE_PROMPT=""
 
       # Add our escape sequences just before the prompt is shown.
-      PS1="%{$(iterm2_prompt_start)%}$PS1%{$(iterm2_prompt_end)%}"
+      if [[ $PS1 == *'$(iterm2_prompt_mark)'* ]]
+      then
+        PS1="$PS1%{$(iterm2_prompt_end)%}"
+      else
+        PS1="%{$(iterm2_prompt_mark)%}$PS1%{$(iterm2_prompt_end)%}"
+      fi
     }
 
     iterm2_precmd() {
@@ -131,7 +120,11 @@ if [[ -o interactive ]]; then
     }
 
     # If hostname -f is slow on your system, set iterm2_hostname prior to sourcing this script.
-    [[ -z "$iterm2_hostname" ]] && iterm2_hostname=`hostname -f`
+    [[ -z "$iterm2_hostname" ]] && iterm2_hostname=`hostname -f 2>/dev/null`
+    # some flavors of BSD (i.e. NetBSD and OpenBSD) don't have the -f option
+    if [ $? -ne 0 ]; then
+      iterm2_hostname=`hostname`
+    fi
 
     [[ -z $precmd_functions ]] && precmd_functions=()
     precmd_functions=($precmd_functions iterm2_precmd)
@@ -140,6 +133,6 @@ if [[ -o interactive ]]; then
     preexec_functions=($preexec_functions iterm2_preexec)
 
     iterm2_print_state_data
-    printf "`start_escape_code`]1337;ShellIntegrationVersion=4;shell=zsh`end_escape_code`"
+    printf "\033]1337;ShellIntegrationVersion=6;shell=zsh\007"
   fi
 fi
