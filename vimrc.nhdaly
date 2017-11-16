@@ -51,7 +51,13 @@ let g:windowswap_map_keys = 0 "prevent default bindings
 nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
 Plugin 'wesQ3/vim-windowswap'
 
-" For haskell highlighting
+" Auto paste-mode when pasting. ... seems pretty obvious saying it out loud...
+Plugin 'ConradIrwin/vim-bracketed-paste'
+
+" Julia syntax highlighting
+Plugin 'JuliaEditorSupport/julia-vim'
+
+" haskell highlighting
 Plugin 'neovimhaskell/haskell-vim'
 
 " Adds command operations that surround text objects.
@@ -76,19 +82,52 @@ nnoremap <silent> <C-h>j :TmuxNavigateDown<cr>
 nnoremap <silent> <C-h>k :TmuxNavigateUp<cr>
 nnoremap <silent> <C-h>l :TmuxNavigateRight<cr>
 nnoremap <silent> <C-h>; :TmuxNavigatePrevious<cr>
-" Insert Mode mappings (note that the 'a' re-enters insert-mode.
-inoremap <silent> <C-h>h <Esc>:TmuxNavigateLeft<cr>a
-inoremap <silent> <C-h>j <Esc>:TmuxNavigateDown<cr>a
-inoremap <silent> <C-h>k <Esc>:TmuxNavigateUp<cr>a
-inoremap <silent> <C-h>l <Esc>:TmuxNavigateRight<cr>a
-inoremap <silent> <C-h>; <Esc>:TmuxNavigatePrevious<cr>a
+" Insert Mode mappings (note that the 'C-o' re-enters insert-mode after the
+" following command.)
+inoremap <silent> <C-h>h <C-o>:TmuxNavigateLeft<cr>
+inoremap <silent> <C-h>j <C-o>:TmuxNavigateDown<cr>
+inoremap <silent> <C-h>k <C-o>:TmuxNavigateUp<cr>
+inoremap <silent> <C-h>l <C-o>:TmuxNavigateRight<cr>
+inoremap <silent> <C-h>; <C-o>:TmuxNavigatePrevious<cr>
 " Visual Mode mappings (note that the 'gv' re-enters visual-mode.
 vnoremap <silent> <C-h>h <Esc>:TmuxNavigateLeft<cr>gv
 vnoremap <silent> <C-h>j <Esc>:TmuxNavigateDown<cr>gv
 vnoremap <silent> <C-h>k <Esc>:TmuxNavigateUp<cr>gv
 vnoremap <silent> <C-h>l <Esc>:TmuxNavigateRight<cr>gv
 vnoremap <silent> <C-h>; <Esc>:TmuxNavigatePrevious<cr>gv
+" Command Mode mappings. Oh boy. To execute the command and not modify the
+" current cmdline, you need this function and <C-R>= mappings, which insert the
+" value returned from the function (in this case "") at that place in the
+" command line.
+function! CmdModeTmuxNavigate(cmd)
+  if a:cmd ==? "h"
+    silent! execute "TmuxNavigateLeft"
+  elseif a:cmd ==? "j"
+    silent! execute "TmuxNavigateDown"
+  elseif a:cmd ==? "k"
+    silent! execute "TmuxNavigateUp"
+  elseif a:cmd ==? "l"
+    silent! execute "TmuxNavigateRight"
+  elseif a:cmd ==? ";"
+    silent! execute "TmuxNavigatePrevious"
+  endif
+  return ""
+endfunction
 
+cnoremap <silent> <C-h>h <C-R>=CmdModeTmuxNavigate("h")<CR>
+cnoremap <silent> <C-h>j <C-R>=CmdModeTmuxNavigate("j")<CR>
+cnoremap <silent> <C-h>k <C-R>=CmdModeTmuxNavigate("k")<CR>
+cnoremap <silent> <C-h>l <C-R>=CmdModeTmuxNavigate("l")<CR>
+cnoremap <silent> <C-h>; <C-R>=CmdModeTmuxNavigate(";")<CR>
+
+" NeoVim Terminal Mode mappings
+if has('nvim')
+  tnoremap <silent> <C-h>h <C-\><C-N>:TmuxNavigateLeft<cr>a
+  tnoremap <silent> <C-h>j <C-\><C-N>:TmuxNavigateDown<cr>a
+  tnoremap <silent> <C-h>k <C-\><C-N>:TmuxNavigateUp<cr>a
+  tnoremap <silent> <C-h>l <C-\><C-N>:TmuxNavigateRight<cr>a
+  tnoremap <silent> <C-h>; <C-\><C-N>:TmuxNavigatePrevious<cr>a
+endif
 
 
 "" -- Productivity Plugins! ---------
@@ -195,6 +234,9 @@ set showmatch "Highlight matching parens
 " Note -- this seems to be enabled even without this line...
 set hidden "Allow leaving unsaved buffers to switch windows.
 
+" Allow editing compiled java files, by treating them as .zip files.
+au BufRead *.srcjar set filetype=zip
+
 "---- Search settings ------ {{{
 "Set vim to use Perl-like regexes instead of Vim-style
 "nnoremap / /\v
@@ -211,8 +253,8 @@ nnoremap <S-tab> %
 vnoremap <S-tab> %
 " }}}
 
-nnoremap <C-Y> :set invpaste paste?<CR>
-set pastetoggle=<C-Y>
+ nnoremap <F10> :set invpaste paste?<CR>
+set pastetoggle=<F10>
 set showmode
 
 set number "show line numbers. ... duh?
@@ -273,7 +315,10 @@ inoremap <buffer> <silent> <End>  <C-o>g<End>
 nmap K i<cr><esc>k$
 
 " Makes s save
-nmap s :w <enter>
+" nmap s :w <enter>
+" Unmapping s to save because I press it way too often now -- habitually -- and
+" I get screwed up on vim-like programs. (Maps to a Beep instead.)
+nmap s \<Esc>
 
 "" Powerline
 "python from powerline.vim import setup as powerline_setup
@@ -293,6 +338,14 @@ augroup END
 
 
 ""========= END MY ADDITIONS ============ }}}
+
+""=========== NEOVIM =========== {{{
+
+if has('nvim')
+  set scrollback=100000
+endif
+
+""=========== End NEOVIM =========== }}}
 
 ""========= Starter Vimrc ============ {{{
 " An example for a vimrc file.

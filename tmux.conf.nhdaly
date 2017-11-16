@@ -11,6 +11,9 @@ set -g prefix C-h
 bind C-h send-prefix
 
 
+# Unbind kill-pane since I do it reflexivly and I'm starting to use nvim panes more.
+unbind x
+
 # -------- Mouse support for tmux 2.1 ----------------
 # add mouse support (pane resizing, pane selecting, window select -- no scroll)
 set-option -g mouse on
@@ -127,9 +130,10 @@ set-window-option -g mode-keys vi
 bind-key -t vi-copy 'v' begin-selection
 bind-key -t vi-copy 'y' copy-selection
 
-# prefix + Ctrl-s - save
 # prefix + Ctrl-r - restore
 set -g @plugin 'tmux-plugins/tmux-resurrect'
+# Disable prefix + Ctrl-s - save (Cause i accidentally hit it when i mean to hit restore sometimes.)
+set -g @resurrect-save '--nothing--'
 set -g @resurrect-capture-pane-contents 'on'
 # for vim
 set -g @resurrect-strategy-vim 'session'
@@ -141,7 +145,7 @@ set -g @plugin 'tmux-plugins/tmux-continuum'
 # Configure mouse mode options I like.
 set -g @plugin 'nhdaly/tmux-better-mouse-mode'
 set -g @scroll-without-changing-pane 'on' # change from tmux v2.0.
-set -g @scroll-speed-num-lines-per-scroll 2 # change from tmux v2.0.
+set -g @scroll-speed-num-lines-per-scroll 3 # change from tmux v2.0.
 set -g @emulate-scroll-for-no-mouse-alternate-buffer 'on' # change from tmux v2.0.
 
 # The default clean-plugins binding doesn't work for me on iTerm.
