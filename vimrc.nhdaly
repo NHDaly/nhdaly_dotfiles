@@ -51,7 +51,13 @@ let g:windowswap_map_keys = 0 "prevent default bindings
 nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
 Plugin 'wesQ3/vim-windowswap'
 
-" For haskell highlighting
+" Auto paste-mode when pasting. ... seems pretty obvious saying it out loud...
+Plugin 'ConradIrwin/vim-bracketed-paste'
+
+" Julia syntax highlighting
+Plugin 'JuliaEditorSupport/julia-vim'
+
+" haskell highlighting
 Plugin 'neovimhaskell/haskell-vim'
 
 " Adds command operations that surround text objects.
@@ -76,7 +82,8 @@ nnoremap <silent> <C-h>j :TmuxNavigateDown<cr>
 nnoremap <silent> <C-h>k :TmuxNavigateUp<cr>
 nnoremap <silent> <C-h>l :TmuxNavigateRight<cr>
 nnoremap <silent> <C-h>; :TmuxNavigatePrevious<cr>
-" Insert Mode mappings (note that the 'a' re-enters insert-mode.
+" Insert Mode mappings (note that the 'C-o' re-enters insert-mode after the
+" following command.)
 inoremap <silent> <C-h>h <C-o>:TmuxNavigateLeft<cr>
 inoremap <silent> <C-h>j <C-o>:TmuxNavigateDown<cr>
 inoremap <silent> <C-h>k <C-o>:TmuxNavigateUp<cr>
@@ -113,6 +120,14 @@ cnoremap <silent> <C-h>k <C-R>=CmdModeTmuxNavigate("k")<CR>
 cnoremap <silent> <C-h>l <C-R>=CmdModeTmuxNavigate("l")<CR>
 cnoremap <silent> <C-h>; <C-R>=CmdModeTmuxNavigate(";")<CR>
 
+" NeoVim Terminal Mode mappings
+if has('nvim')
+  tnoremap <silent> <C-h>h <C-\><C-N>:TmuxNavigateLeft<cr>a
+  tnoremap <silent> <C-h>j <C-\><C-N>:TmuxNavigateDown<cr>a
+  tnoremap <silent> <C-h>k <C-\><C-N>:TmuxNavigateUp<cr>a
+  tnoremap <silent> <C-h>l <C-\><C-N>:TmuxNavigateRight<cr>a
+  tnoremap <silent> <C-h>; <C-\><C-N>:TmuxNavigatePrevious<cr>a
+endif
 
 
 "" -- Productivity Plugins! ---------
@@ -300,7 +315,10 @@ inoremap <buffer> <silent> <End>  <C-o>g<End>
 nmap K i<cr><esc>k$
 
 " Makes s save
-nmap s :w <enter>
+" nmap s :w <enter>
+" Unmapping s to save because I press it way too often now -- habitually -- and
+" I get screwed up on vim-like programs. (Maps to a Beep instead.)
+nmap s \<Esc>
 
 "" Powerline
 "python from powerline.vim import setup as powerline_setup
@@ -321,6 +339,13 @@ augroup END
 
 ""========= END MY ADDITIONS ============ }}}
 
+""=========== NEOVIM =========== {{{
+
+if has('nvim')
+  set scrollback=100000
+endif
+
+""=========== End NEOVIM =========== }}}
 
 ""========= Starter Vimrc ============ {{{
 " An example for a vimrc file.
