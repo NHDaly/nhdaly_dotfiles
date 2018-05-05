@@ -51,13 +51,18 @@ let g:windowswap_map_keys = 0 "prevent default bindings
 nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
 Plugin 'wesQ3/vim-windowswap'
 
+" Switch between MRU buffers from the current session.
+let g:bufmru_switchkey = "<c-t>"  " Never use this.
+command ReopenLastTab execute "vsplit " . bufname(g:bufmru_bnrs[1])
+Plugin 'vim-scripts/bufmru.vim'
+
 " Auto paste-mode when pasting. ... seems pretty obvious saying it out loud...
 Plugin 'ConradIrwin/vim-bracketed-paste'
 
-" Julia syntax highlighting
+" Julia syntax highlighting, block-text, etc.
 Plugin 'JuliaEditorSupport/julia-vim'
 
-" haskell highlighting
+" haskell syntax highlighting
 Plugin 'neovimhaskell/haskell-vim'
 
 " Adds command operations that surround text objects.
