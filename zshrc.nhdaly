@@ -158,3 +158,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 if test "$TMUX_NEW_CONDA_ENV" ; then
   source activate "$TMUX_NEW_CONDA_ENV"
 fi
+
+# added by travis gem
+[ -f /Users/daly/.travis/travis.sh ] && source /Users/daly/.travis/travis.sh
