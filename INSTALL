@@ -13,15 +13,15 @@ mkdir ~/.julia/config/ && \
 ln -s ~/dotfiles/nhdaly/juliarc.nhdaly.jl ~/.julia/config/startup.jl && \
 ln -s ~/dotfiles/nhdaly/iterm2_shell_integration.zsh ~/.iterm2_shell_integration.zsh || \
 (echo "
-# Failed to install. If you're confident about it, you can erase those
-# pre-existing files with these commands:
-# rm -rf ~/.vim
-# rm ~/.vimrc
-# rm ~/.zshrc
-# rm ~/.tmux.conf
-# rm ~/.juliarc.jl
-# rm ~/.julia/config/startup.jl
-# rm ~/.iterm2_shell_integration.zsh
+Failed to install. If you're confident about it, you can erase those
+pre-existing files with these commands:
+rm -rf ~/.vim
+rm ~/.vimrc
+rm ~/.zshrc
+rm ~/.tmux.conf
+rm ~/.juliarc.jl
+rm ~/.julia/config/startup.jl
+rm ~/.iterm2_shell_integration.zsh
 " && exit 1)
 
 # Also you'll need to install Antigen, our zsh package manager:
