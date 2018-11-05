@@ -1,9 +1,17 @@
+if VERSION >= v"0.7-"
+  using Pkg
+  if "Project.toml" in readdir(".")
+    println("Activating project at $(pwd())")
+    Pkg.activate(".")
+  end
+end
+
 try
   import OhMyREPL
-  OhMyREPL.input_prompt!(string("julia$(VERSION.major).$(VERSION.minor)>"))
+  #OhMyREPL.input_prompt!(string("julia$(VERSION.major).$(VERSION.minor)>"))
   OhMyREPL.output_prompt!(">>")
   OhMyREPL.BracketInserter.enable_autocomplete_brackets(false)
-catch 
+catch
 end
 
 try
@@ -18,5 +26,3 @@ catch err
   println("Failed to load Revise")
 end
 
-
-include("$(homedir())/dotfiles/nhdaly/nhdaly_utils.jl")
