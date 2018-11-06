@@ -98,8 +98,9 @@ set -g status-bg '#111111'
 set -g status-fg '#aaaaaa'
 
 # Add pretty powerline status
-# run-shell "powerline-daemon -q"
-# run 'PYTHON_PACKAGES=$(pip show powerline-status | grep Location: | sed "s/Location: //"); tmux source "$PYTHON_PACKAGES/powerline/bindings/tmux/powerline.conf"'
+run-shell "source ~/.bashrc && powerline-daemon -q"
+run-shell "source ~/.bashrc && powerline-config tmux setup"
+#run 'PYTHON_PACKAGES=$(pip show powerline-status | grep Location: | sed "s/Location: //"); tmux source "$PYTHON_PACKAGES/powerline/bindings/tmux/powerline.conf"'
 
 
 ## ======= Tmux Plugin Manager =================================================
@@ -121,7 +122,7 @@ set -g @plugin 'thewtex/tmux-mem-cpu-load'
 
 # Enables C-b u to open any url printed to the screen. Awesome.
 # Note, you must install the urlview binary separately (brew, apt-get, etc.).
-set -g @plugin 'tmux-plugins/tmux-urlview'
+#set -g @plugin 'tmux-plugins/tmux-urlview'
 
 # prefix + / searches regex on output, plus a bunch of predefined searches.
 set -g @plugin 'tmux-plugins/tmux-copycat'
