@@ -39,8 +39,25 @@ stat ~/.tmux/plugins/tpm || git clone https://github.com/tmux-plugins/tpm ~/.tmu
 # Then make zsh your default shell!
 echo $SHELL | grep zsh | wc -l | ~/dotfiles/nhdaly/scripts/math-eval-bool-expr "== 1" || chsh -s /bin/zsh
 
-# Install Powerline Fonts
+# ---- Install conda for Python stuff: ----
+curl -o ~/Downloads/Miniconda3-latest-MacOSX-x86_64.sh https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh && bash ~/Downloads/Miniconda3-latest-MacOSX-x86_64.sh
+
+# Miniconda creates a .bash_profile, but we use bashrc:
+cat /Users/nathan.daly/.bash_profile >> ~/.bashrc && rm ~/.bash_profile
+source ~/.bashrc
+
+conda update pip
+
+# Install Powerline Fonts && tmux powerline-status
 git clone https://github.com/powerline/fonts.git --depth=1 &&  (cd fonts; ./install.sh)  && rm -rf fonts
+pip install powerline-status
+
+
+# Install Homebrew
+echo "Install homebrew: https://brew.sh/"
+echo "Then install brew packages:"
+echo "./INSTALL.brew"
+
 
 
 # installed tools
