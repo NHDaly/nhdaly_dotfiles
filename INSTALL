@@ -9,7 +9,7 @@ ln -s ~/dotfiles/nhdaly/vimrc.nhdaly ~/.vimrc && \
 ln -s ~/dotfiles/nhdaly/vim ~/.vim && \
 ln -s ~/dotfiles/nhdaly/tmux.conf.nhdaly ~/.tmux.conf && \
 ln -s ~/dotfiles/nhdaly/juliarc.nhdaly.jl ~/.juliarc.jl && \
-mkdir ~/.julia/config/ && \
+mkdir -p ~/.julia/config/ && \
 ln -s ~/dotfiles/nhdaly/juliarc.nhdaly.jl ~/.julia/config/startup.jl && \
 ln -s ~/dotfiles/nhdaly/iterm2_shell_integration.zsh ~/.iterm2_shell_integration.zsh || \
 (echo "
@@ -20,7 +20,7 @@ rm ~/.vimrc
 rm ~/.zshrc
 rm ~/.tmux.conf
 rm ~/.juliarc.jl
-rm ~/.julia/config/startup.jl
+rm -rf ~/.julia/config
 rm ~/.iterm2_shell_integration.zsh
 " && exit 1)
 
@@ -30,7 +30,7 @@ stat ~/bin/antigen/antigen.zsh || git clone https://github.com/zsh-users/antigen
 (cd ~/bin/antigen && git checkout v1.2.1)  # I had issues with the latest version of antigen.
 
 # And Vundle:
-stat ~/.vim/bundle/Vundle.vim/README.md || git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+stat ~/.vim/bundle/Vundle.vim/README.md || git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 
 # And Tmux Plugin Manager:
