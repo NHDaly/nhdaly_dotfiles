@@ -1,0 +1,45 @@
+"*":
+  Hydrogen:
+    languageMappings: "{\"bash\": \"Shell Script\", \"octave\": \"MATLAB\", \"cling-cpp11\": \"jupyter-cling-kernel\"}"
+    startDir: "dirOfFile"
+  "autocomplete-plus":
+    confirmCompletion: "tab"
+  core:
+    disabledPackages: [
+      "linter-htmlhint"
+      "language-gfm"
+      "vim-surround"
+      "linter-julia"
+    ]
+    excludeVcsIgnoredPaths: false
+    reopenProjectMenuCount: 25
+    telemetryConsent: "limited"
+  "cursor-history":
+    flashOnLand: false
+  editor:
+    fontSize: 13
+    scrollPastEnd: true
+    tabType: "soft"
+  "exception-reporting":
+    userId: "9ae7b5a1-d33e-5c56-c533-7755af4000ab"
+  "julia-client":
+    firstBoot: false
+    juliaOptions: {}
+    juliaPath: "julia7"
+  "linter-ui-default":
+    panelHeight: 182
+  minimap:
+    absoluteMode: true
+    plugins:
+      "highlight-selected": true
+      "highlight-selectedDecorationsZIndex": 0
+  "tool-bar":
+    position: "Left"
+  "tree-view":
+    hideVcsIgnoredFiles: true
+  "uber-juno":
+    disable: true
+  "vim-mode-plus":
+    useClipboardAsDefaultRegister: false
+  welcome:
+    showOnStartup: false

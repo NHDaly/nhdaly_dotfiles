@@ -8,6 +8,7 @@ ln -s ~/dotfiles/nhdaly/zshrc.nhdaly ~/.zshrc && \
 ln -s ~/dotfiles/nhdaly/vimrc.nhdaly ~/.vimrc && \
 ln -s ~/dotfiles/nhdaly/vim ~/.vim && \
 ln -s ~/dotfiles/nhdaly/tmux.conf.nhdaly ~/.tmux.conf && \
+ln -s ~/dotfiles/nhdaly/atom ~/.atom && \
 ln -s ~/dotfiles/nhdaly/juliarc.nhdaly.jl ~/.juliarc.jl && \
 mkdir -p ~/.julia/config/ && \
 ln -s ~/dotfiles/nhdaly/juliarc.nhdaly.jl ~/.julia/config/startup.jl && \
@@ -19,6 +20,7 @@ rm -rf ~/.vim
 rm ~/.vimrc
 rm ~/.zshrc
 rm ~/.tmux.conf
+rm -rf ~/.atom
 rm ~/.juliarc.jl
 rm -rf ~/.julia/config
 rm ~/.iterm2_shell_integration.zsh
