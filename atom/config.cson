@@ -1,6 +1,7 @@
 "*":
   Hydrogen:
-    languageMappings: "{\"bash\": \"Shell Script\", \"octave\": \"MATLAB\", \"cling-cpp11\": \"jupyter-cling-kernel\"}"
+    kernelNotifications: true
+    languageMappings: "{\"bash\": \"Shell Script\", \"babel\": \"babel es6 javascript\", \"octave\": \"MATLAB\", \"cling-cpp11\": \"jupyter-cling-kernel\"}"
     startDir: "dirOfFile"
   "autocomplete-plus":
     confirmCompletion: "tab"
@@ -8,8 +9,10 @@
     disabledPackages: [
       "linter-htmlhint"
       "language-gfm"
-      "vim-surround"
       "linter-julia"
+      "language-javascript"
+      "vim-surround"
+      "symbols-view"
     ]
     excludeVcsIgnoredPaths: false
     reopenProjectMenuCount: 25
@@ -17,7 +20,6 @@
   "cursor-history":
     flashOnLand: false
   editor:
-    fontSize: 13
     scrollPastEnd: true
     tabType: "soft"
   "exception-reporting":
@@ -25,11 +27,13 @@
   "julia-client":
     firstBoot: false
     juliaOptions: {}
-    juliaPath: "julia7"
+    juliaPath: "julia1"
+  "language-babel": {}
   "linter-ui-default":
-    panelHeight: 182
+    panelHeight: 116
   minimap:
     absoluteMode: true
+    adjustAbsoluteModeHeight: true
     plugins:
       "highlight-selected": true
       "highlight-selectedDecorationsZIndex": 0
@@ -43,3 +47,10 @@
     useClipboardAsDefaultRegister: false
   welcome:
     showOnStartup: false
+  whitespace: {}
+".console.julia.source":
+  editor:
+    preferredLineLength: 92
+".julia.source":
+  editor:
+    preferredLineLength: 92
