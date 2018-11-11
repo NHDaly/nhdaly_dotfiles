@@ -99,9 +99,13 @@ set -g status-fg '#aaaaaa'
 
 # Add pretty powerline status
 run-shell "source ~/.bashrc && powerline-daemon -q"
-run-shell "source ~/.bashrc && powerline-config tmux setup"
+run-shell "source ~/.bashrc && powerline-config -p /Users/daly/dotfiles/nhdaly/powerline tmux setup"
 #run 'PYTHON_PACKAGES=$(pip show powerline-status | grep Location: | sed "s/Location: //"); tmux source "$PYTHON_PACKAGES/powerline/bindings/tmux/powerline.conf"'
 
+# Manually set up more compact powerline status:
+set-option -g window-status-separator ""
+set-option -g window-status-format "#[fg=colour244,bg=colour233,nobold,noitalics,nounderscore] #I#F#[fg=colour240,bg=colour233,nobold,noitalics,nounderscore] #[default]#W "
+set-option -g window-status-current-format "#[fg=colour233,bg=colour31,nobold,noitalics,nounderscore] #[fg=colour117,bg=colour31,nobold,noitalics,nounderscore]#I#F #[fg=colour231,bg=colour31,bold,noitalics,nounderscore]#W#[fg=colour31,bg=colour233,nobold,noitalics,nounderscore]"
 
 ## ======= Tmux Plugin Manager =================================================
 # List of plugins
