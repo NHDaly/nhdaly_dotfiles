@@ -4,7 +4,7 @@
     "disableScrollingIf3" : true,
     "BTTForceNormalClickPressure5F" : 200,
     "disableScrollingIf2" : true,
-    "BTTDidRegisterForUpdateStats" : "2.645",
+    "BTTDidRegisterForUpdateStats" : "2.660",
     "BTTShowControlStrip" : false,
     "BTTShowControlStripItem" : false,
     "BTTForceForceClickPressure5F" : 600,
@@ -74,7 +74,7 @@
     "BTTForceForceClickPressure2F" : 700,
     "useAppleRemotePlugin" : false,
     "BSTSnapAreaDefaultCornerRadius" : 20,
-    "BTTForcedHidden" : true,
+    "BTTForcedHidden" : false,
     "BSTSnapAreaDefaultAnimationDuration" : 0.30000001192092896,
     "BTTTpThreeFingerSwipeSensitivity" : 0.29999999999999999,
     "BSTMemorySaver" : true,
@@ -114,7 +114,7 @@
     "BSTCornerRoundness" : 40,
     "BTTDismissIfNothingToShow" : true,
     "BSTPreventTopMissionControl" : true,
-    "BTTNumberOfStarts" : 5972,
+    "BTTNumberOfStarts" : 6178,
     "BTTHTTPServerEncrypted" : false,
     "showKeyboardTab" : true,
     "BTTConvertedDevices" : true,
@@ -128,55 +128,20 @@
     "BTTTouchBarChecked" : true,
     "BTTDrawingAreaHeight" : 626,
     "tpThreeFingerDoubleTapDelay" : 0.5,
-    "BTTTouchBarVisible" : false,
+    "BTTTouchBarVisible" : true,
     "BTTTouchBarUseMonoSpacedFont" : true
   },
-  "BTTPresetUUID" : "877D7ABA-1413-4AD4-8903-82132DC274D1",
+  "BTTPresetUUID" : "9AACB868-AD74-428F-86E8-96A5852A175E",
   "BTTPresetContent" : [
     {
       "BTTAppBundleIdentifier" : "BT.G",
       "BTTAppName" : "Global",
-      "BTTTriggers" : [
-        {
-          "BTTTouchBarButtonName" : "🌙",
-          "BTTTriggerType" : 629,
-          "BTTTriggerClass" : "BTTTriggerTypeTouchBar",
-          "BTTPredefinedActionType" : 197,
-          "BTTPredefinedActionName" : "Toggle Dark Mode",
-          "BTTEnabled2" : 1,
-          "BTTUUID" : "3917769F-A8C9-4D35-B713-8E457A012DBD",
-          "BTTEnabled" : 1,
-          "BTTRequiredModifierKeys" : 1048576,
-          "BTTOrder" : 2,
-          "BTTTriggerConfig" : {
-            "BTTTouchBarAlternateBackgroundColor" : "0.000000, 0.000000, 0.000000, 0.000000",
-            "BTTTouchBarItemIconHeight" : 22,
-            "BTTTouchBarButtonCornerRadius" : 6,
-            "BTTTouchBarItemPlacement" : 0,
-            "BTTTouchBarButtonName" : "🌙",
-            "BTTTouchBarButtonColor" : "75.323769, 75.323769, 75.323769, 255.000000",
-            "BTTTouchBarItemIconWidth" : 22,
-            "BTTTouchBarFreeSpaceAfterButton" : 5,
-            "BTTTouchBarItemPadding" : 0
-          }
-        },
-        {
-          "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
-          "BTTPredefinedActionType" : 180,
-          "BTTPredefinedActionName" : "fn Key Down",
-          "BTTAdditionalConfiguration" : "8388608",
-          "BTTEnabled2" : 1,
-          "BTTUUID" : "EE5200C5-CEF2-42D4-AD2B-22881C5802E5",
-          "BTTTriggerOnDown" : 1,
-          "BTTEnabled" : 1,
-          "BTTShortcutKeyCode" : 0,
-          "BTTShortcutModifierKeys" : 8388608,
-          "BTTOrder" : 11
-        }
-      ],
       "BTTAppSpecificSettings" : {
 
-      }
+      },
+      "BTTTriggers" : [
+
+      ]
     },
     {
       "BTTAppBundleIdentifier" : "com.apple.finder",
@@ -186,94 +151,6 @@
       },
       "BTTTriggers" : [
 
-      ]
-    },
-    {
-      "BTTAppBundleIdentifier" : "com.github.atom",
-      "BTTAppName" : "Atom",
-      "BTTAppProcessMatchMode" : 2,
-      "BTTAppProcessName" : "Atom",
-      "BTTTriggers" : [
-        {
-          "BTTTriggerType" : 103,
-          "BTTTriggerTypeDescription" : "3 Finger Swipe Down",
-          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
-          "BTTPredefinedActionType" : -1,
-          "BTTPredefinedActionName" : "No Action",
-          "BTTShortcutToSend" : "55,126",
-          "BTTEnabled2" : 1,
-          "BTTUUID" : "50F85036-B003-4C3D-9DAD-F676EC96EBC9",
-          "BTTEnabled" : 1,
-          "BTTOrder" : 3,
-          "BTTIconData" : "",
-          "BTTAlternateIconData" : ""
-        },
-        {
-          "BTTTriggerType" : 101,
-          "BTTTriggerTypeDescription" : "3 Finger Swipe Right",
-          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
-          "BTTPredefinedActionType" : -1,
-          "BTTPredefinedActionName" : "No Action",
-          "BTTShortcutToSend" : "59,56,55,124",
-          "BTTEnabled2" : 1,
-          "BTTUUID" : "7FCBDDA2-D497-4ADA-B26E-EA07BDFE4D3A",
-          "BTTEnabled" : 1,
-          "BTTOrder" : 1
-        },
-        {
-          "BTTTriggerType" : 1005,
-          "BTTTriggerTypeDescription" : "Button 5",
-          "BTTTriggerClass" : "BTTTriggerTypeNormalMouse",
-          "BTTPredefinedActionType" : -1,
-          "BTTPredefinedActionName" : "No Action",
-          "BTTShortcutToSend" : "59,56,55,123",
-          "BTTEnabled2" : 1,
-          "BTTUUID" : "CEDCC9D0-9336-48F2-8F07-E7578E89B3EC",
-          "BTTEnabled" : 1,
-          "BTTOrder" : 0,
-          "BTTIconData" : "",
-          "BTTAlternateIconData" : ""
-        },
-        {
-          "BTTTriggerType" : 1003,
-          "BTTTriggerTypeDescription" : "Button 3",
-          "BTTTriggerClass" : "BTTTriggerTypeNormalMouse",
-          "BTTPredefinedActionType" : -1,
-          "BTTPredefinedActionName" : "No Action",
-          "BTTShortcutToSend" : "59,56,55,124",
-          "BTTEnabled2" : 1,
-          "BTTUUID" : "14C3669F-DF49-418E-8D10-29EDAC3C93C9",
-          "BTTEnabled" : 1,
-          "BTTOrder" : 1,
-          "BTTIconData" : "",
-          "BTTAlternateIconData" : ""
-        },
-        {
-          "BTTTriggerType" : 100,
-          "BTTTriggerTypeDescription" : "3 Finger Swipe Left",
-          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
-          "BTTPredefinedActionType" : -1,
-          "BTTPredefinedActionName" : "No Action",
-          "BTTShortcutToSend" : "59,56,55,123",
-          "BTTEnabled2" : 1,
-          "BTTUUID" : "263D20B1-E0F4-46A9-B862-73D71C644D06",
-          "BTTEnabled" : 1,
-          "BTTOrder" : 0
-        },
-        {
-          "BTTTriggerType" : 102,
-          "BTTTriggerTypeDescription" : "3 Finger Swipe Up",
-          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
-          "BTTPredefinedActionType" : -1,
-          "BTTPredefinedActionName" : "No Action",
-          "BTTShortcutToSend" : "55,125",
-          "BTTEnabled2" : 1,
-          "BTTUUID" : "006CA878-8D32-4F1E-9AB1-DB5F0A546EAF",
-          "BTTEnabled" : 1,
-          "BTTOrder" : 2,
-          "BTTIconData" : "",
-          "BTTAlternateIconData" : ""
-        }
       ]
     }
   ],
