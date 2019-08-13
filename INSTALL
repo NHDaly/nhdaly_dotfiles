@@ -28,6 +28,9 @@ rm -rf ~/.julia/config
 rm ~/.iterm2_shell_integration.zsh
 " && exit 1)
 
+# Set up global gitintore file
+git config --global core.excludesfile ~/.gitignore
+
 # Also you'll need to install Antigen, our zsh package manager:
 mkdir -p ~/bin
 stat ~/bin/antigen/antigen.zsh || git clone https://github.com/zsh-users/antigen.git ~/bin/antigen
