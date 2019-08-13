@@ -26,6 +26,13 @@
   'ctrl-h h': 'window:focus-pane-on-left'
   'ctrl-h j': 'window:focus-pane-below'
   'ctrl-h l': 'window:focus-pane-on-right'
+  'cmd-enter': 'unset!'
+'atom-workspace:not(.editor)':
+  'cmd-enter': 'unset!'
+'.platform-darwin atom-text-editor[data-grammar="source julia"]':
+  'cmd-enter': 'julia-client:run-block'
+
+
 
 'atom-text-editor.vim-mode-plus.insert-mode':
   'ctrl-w': ''

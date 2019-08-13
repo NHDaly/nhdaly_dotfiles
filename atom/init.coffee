@@ -10,3 +10,5 @@
 #   editor.onDidSave ->
 #     console.log "Saved! #{editor.getPath()}"
 #
+
+process.env.JULIA_DEPOT_PATH="/Users/nathan.daly/.julia-atom"

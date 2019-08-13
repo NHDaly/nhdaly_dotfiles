@@ -1,10 +1,12 @@
 "*":
   Hydrogen:
     kernelNotifications: true
-    languageMappings: "{\"bash\": \"Shell Script\", \"babel\": \"babel es6 javascript\", \"octave\": \"MATLAB\", \"cling-cpp11\": \"jupyter-cling-kernel\"}"
+    languageMappings: "{\"bash\": \"Shell Script\", \"babel\": \"babel es6 javascript\", \"octave\": \"MATLAB\", \"cling-cpp14\": \"c++\", \"cling-cpp17\": \"c++\"}"
     startDir: "dirOfFile"
   "autocomplete-plus":
     confirmCompletion: "tab"
+  "better-git-blame":
+    searchInLayerEnabled: false
   core:
     disabledPackages: [
       "linter-htmlhint"
@@ -20,14 +22,28 @@
   "cursor-history":
     flashOnLand: false
   editor:
+    preferredLineLength: 92
     scrollPastEnd: true
     tabType: "soft"
   "exception-reporting":
     userId: "9ae7b5a1-d33e-5c56-c533-7755af4000ab"
+  "fuzzy-finder":
+    scoringSystem: "fast"
+    useRipGrep: true
   "julia-client":
+    consoleOptions: {}
     firstBoot: false
     juliaOptions: {}
-    juliaPath: "julia1"
+    uiOptions:
+      layouts:
+        console: {}
+        defaultPanes:
+          plotPane: false
+        documentation:
+          defaultLocation: "bottom"
+        plotPane: {}
+        workspace:
+          defaultLocation: "bottom"
   "language-babel": {}
   "linter-ui-default":
     panelHeight: 116
@@ -39,8 +55,7 @@
       "highlight-selectedDecorationsZIndex": 0
   "tool-bar":
     position: "Left"
-  "tree-view":
-    hideVcsIgnoredFiles: true
+  "tree-view": {}
   "uber-juno":
     disable: true
   "vim-mode-plus":
@@ -54,3 +69,4 @@
 ".julia.source":
   editor:
     preferredLineLength: 92
+    showIndentGuide: false
