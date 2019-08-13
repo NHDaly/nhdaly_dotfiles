@@ -37,6 +37,8 @@ antigen bundle git
 antigen bundle pip
 antigen bundle python
 antigen bundle vi-mode
+antigen bundle zsh-users/zsh-history-substring-search
+
 
 # Note: Obsolete after zsh 5.0.8!
 # Adds better vi-mode command support to zsh.
@@ -53,6 +55,16 @@ bindkey "[3~" vi-delete-char # fn-delete should delete forward.
 # Unbind the escape-/ binding because it gets triggered when I try to do a history search with "/".
 bindkey -r "/"
 # ==== end vi-mode settings ====
+
+# ==== zsh-history-substring-search settings ====
+# Add nice, fancy, julia-style history search on up/down arrow that
+# searches based on currently typed prefix in prompt
+bindkey '^[OA' history-substring-search-up
+bindkey '^[OB' history-substring-search-down
+HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
+HISTORY_SUBSTRING_SEARCH_GLOBBING_FLAGS="I"
+# ==== end vi-mode settings ====
+
 
 export MANPATH="/usr/local/man:$MANPATH"
 
@@ -77,8 +89,8 @@ POWERLINE_DATE_FORMAT="%D{%m/%d}"
 POWERLINE_NO_BLANK_LINE="true"
 POWERLINE_HOME_CURRENT_PATH="true"
 
-host_name=`hostname -s`
-HOST_SYMBOL=`cat ~/dotfiles/nhdaly/hosts/hostnames | grep "$host_name " | sed -e "s/^.* //"`
+#host_name=`hostname -s`
+#HOST_SYMBOL=`cat ~/dotfiles/nhdaly/hosts/hostnames | grep "$host_name " | sed -e "s/^.* //"`
 
 # Make sure you do all theme customization before sourcing the theme.
 antigen theme ~/dotfiles/nhdaly/custom-zsh/themes powerline --no-local-clone
@@ -131,7 +143,6 @@ alias ggl="gitg --local &>/dev/null &"
 alias ll="ls -alh"
 
 alias cdf="~/dotfiles/nhdaly/scripts/cdiffer_sxs.sh"
-
 
 # ==== Other settings ===================
 
