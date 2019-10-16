@@ -263,6 +263,7 @@ set pastetoggle=<F10>
 set showmode
 
 set number "show line numbers. ... duh?
+set relativenumber "Set the relative-number in both directions from current line
 set splitright "VSplit windows to the right of the current window.
 
 "nnoremap ; : "use ; to mean : so no shift is required
