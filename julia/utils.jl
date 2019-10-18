@@ -91,7 +91,18 @@ function isconst_global(m::Module, s::Symbol)
     b != nothing && b.constp
 end
 
-
+module_recursive_globals_const_mutable(m) =
+    Dict(
+        sm => names
+        for sm in recursive_submodules(m)
+        for names in ([n for n in module_all_globals(sm)
+                        if isconst_global(sm, n) &&
+                            try
+                                v = @eval sm $n
+                                isconcretetype(typeof(v)) && !isimmutable(v) && !isa(v, Union{String, Symbol})
+                            catch ; false end],)
+        if !isempty(names)
+    )
 
 """
     diff_fields(a,b)
@@ -118,13 +129,6 @@ diff_fields(a::Array, b::Array) =
 struct NotExists end
 const notexists = NotExists()
 trygetfield(o, f) = try getfield(o, f) catch; notexists end
-
-module Inner
-module A
-x = 2
-const c = 1
-end
-end
 
 end
 
