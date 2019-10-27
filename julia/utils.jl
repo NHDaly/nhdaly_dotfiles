@@ -16,7 +16,7 @@ end
 List all the specializations of a function, if there are any.
 """
 func_all_specializations(f) =
-    Dict(s.sig => s
+  Dict((m, s.sig) => s
      for m in methods(f).ms
      for s in Channel() do ch; s = m.specializations; while s isa Core.TypeMapEntry; put!(ch, s) ; s=s.next end end)
 
