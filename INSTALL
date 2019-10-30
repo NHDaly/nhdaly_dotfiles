@@ -44,7 +44,7 @@ vim +PluginInstall +qall
 stat ~/.tmux/plugins/tpm || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Then make zsh your default shell!
-echo $SHELL | grep zsh | wc -l | ~/dotfiles/nhdaly/scripts/math-eval-bool-expr "== 1" || chsh -s /bin/zsh
+# echo $SHELL | grep zsh | wc -l | ~/dotfiles/nhdaly/scripts/math-eval-bool-expr "== 1" || chsh -s /bin/zsh
 
 # ---- Install conda for Python stuff: ----
 curl -o ~/Downloads/Miniconda3-latest-MacOSX-x86_64.sh https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh && bash ~/Downloads/Miniconda3-latest-MacOSX-x86_64.sh
