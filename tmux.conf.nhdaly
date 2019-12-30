@@ -13,6 +13,8 @@ bind C-h send-prefix
 
 # Unbind kill-pane since I do it reflexivly and I'm starting to use nvim panes more.
 unbind x
+# Unbind prefix+space (next layout) b/c I often accidentally press it instead of prefix+b, and it's annoying.
+unbind Space
 
 # -------- Mouse support for tmux 2.1 ----------------
 # add mouse support (pane resizing, pane selecting, window select -- no scroll)
