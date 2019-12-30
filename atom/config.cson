@@ -22,6 +22,7 @@
   "cursor-history":
     flashOnLand: false
   editor:
+    fontSize: 13
     preferredLineLength: 92
     scrollPastEnd: true
     tabType: "soft"
@@ -34,6 +35,7 @@
     consoleOptions: {}
     firstBoot: false
     juliaOptions: {}
+    juliaPath: "~/builds/julia-1.3.0/julia"
     uiOptions:
       layouts:
         console: {}
