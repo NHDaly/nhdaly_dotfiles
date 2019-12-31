@@ -27,10 +27,10 @@
   'ctrl-h j': 'window:focus-pane-below'
   'ctrl-h l': 'window:focus-pane-on-right'
   'cmd-enter': 'unset!'
-  # Motions
-  # -------------------------
-  'k': 'core:move-up'     # Allow j and k to move within a soft-wrapped line,
-  'j': 'core:move-down'   # whereas up and down arrows move hard buffer lines.
+  # Allow j and k to move within a soft-wrapped line,
+  # whereas up and down arrows move hard buffer lines.
+  'j': 'vim-mode-plus:move-down-screen'
+  'k': 'vim-mode-plus:move-up-screen'
 
 'atom-workspace:not(.editor)':
   'cmd-enter': 'unset!'
