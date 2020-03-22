@@ -350,6 +350,36 @@ if has('nvim')
   set scrollback=100000
 endif
 
+" VISUAL STUDIO
+"if exists('g:vscode')
+  " workaround for calling command picker in visual mode
+  function! s:runVSCodeCommandWithSelection(cmd)
+      normal! gv
+      let visualmode = visualmode()
+      if visualmode == "V"
+          let startLine = line("v")
+          let endLine = line(".")
+          call VSCodeNotifyRange(a:cmd, startLine, endLine, 1)
+      else
+          let startPos = getpos("v")
+          let endPos = getpos(".")
+          call VSCodeNotifyRangePos(a:cmd, startPos[1], endPos[1], startPos[2], endPos[2]+1, 1)
+      endif
+  endfunction
+  xnoremap <silent> <C-P> :<C-u>call <SID>runVSCodeCommandWithSelection("workbench.action.showCommands")<CR>
+  xnoremap <silent> <leader>J :<C-u>call <SID>runVSCodeCommandWithSelection("language-julia.executeJuliaCodeInREPL")<CR>
+
+  "function! s:showCommands()
+  "  normal! gv
+  "  let startPos = getpos("v")
+  "  let endPos = getpos(".")
+  "  call VSCodeNotifyRangePos("workbench.action.showCommands", startPos[1], endPos[1], startPos[2], endPos[2], 1)
+  "endfunction
+
+  "xnoremap <silent> <C-P> :<C-u>call <SID>showCommands()<CR>
+
+"endif
+
 ""=========== End NEOVIM =========== }}}
 
 ""========= Starter Vimrc ============ {{{
