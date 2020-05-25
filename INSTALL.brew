@@ -1,6 +1,6 @@
 #!/bin/bash
 
-brew install git macvim tmux cmake bash ydiff ncdu cputhrottle wget tree rlwrap htop hexedit dos2unix
+brew install git macvim tmux cmake bash ydiff ncdu wget tree rlwrap htop hexedit dos2unix
 
 # gpg?
 
