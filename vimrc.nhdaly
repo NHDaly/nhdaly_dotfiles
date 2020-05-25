@@ -318,7 +318,9 @@ inoremap <buffer> <silent> <Home> <C-o>g<Home>
 inoremap <buffer> <silent> <End>  <C-o>g<End>
 
 " Makes K split lines (the opposite of J).
-nmap K i<cr><esc>k$
+nmap K i<cr><Esc>k$
+" (And leave cursor on start of the new line)
+"nmap K i<cr><C-o>:stopinsert<CR>
 
 " Makes s save
 " nmap s :w <enter>
