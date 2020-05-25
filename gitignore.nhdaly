@@ -2,7 +2,11 @@
 *~
 .*.swp
 Session.vim
+.vscode
 
 # ctags
 .tags
 .tags1
+
+# Julia DEPOT dir
+.julia*
