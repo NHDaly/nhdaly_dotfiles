@@ -2,5 +2,9 @@ vim/cache
 vim/bundle
 vim/.netrwhist
 
+vscode/globalStorage
+vscode/workspaceStorage
+vscode/syncLocalSettings.json
+
 *~
 .*.swo

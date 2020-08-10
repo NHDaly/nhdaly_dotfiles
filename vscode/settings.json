@@ -1,0 +1,42 @@
+{
+    "julia.enableTelemetry": true,
+    "julia.executablePath": "julia",
+    "files.exclude": {
+        "**/.git/**.jl": true,
+        "**/.julia*": true,
+        },
+    "vscode-neovim.neovimPath": "nvim",
+    "editor.scrollBeyondLastLine": false,
+    "editor.rulers": [
+        92
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["K"],
+            "after": [
+                "i",
+                "<CR>",
+                "<Escape>",
+                "k",
+                "$",
+            ]
+        },
+        {
+            "before": ["s"],
+            "commands": [
+                ":w"
+            ]
+        }
+    ],
+    "window.zoomLevel": 0,
+    "vim.textwidth": 92,
+    "julia.enableCrashReporter": true,
+    "files.trimTrailingWhitespace": true,
+    "workbench.activityBar.visible": true,
+    "sync.autoDownload": true,
+    "sync.autoUpload": true,
+    "sync.gist": "431f46a1a8cbaf7fef9eeba33003a3f3",
+    "sync.forceUpload": true,
+    "terminal.integrated.scrollback": 100000,
+}
+

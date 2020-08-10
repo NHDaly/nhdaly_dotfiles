@@ -1,0 +1,31 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    // Up and down, between the editors and the terminal
+    {
+        "key": "ctrl+h j",
+        "command": "workbench.action.terminal.focus"
+    },
+    {
+        "key": "ctrl+h k",
+        "command": "workbench.action.focusActiveEditorGroup"
+    },
+
+    // Side to side between the active editors
+    {
+        "key": "ctrl+h",
+        "command": "extension.vim_ctrl+w",
+        "when": "editorTextFocus && vim.active && vim.use<C-w> && !inDebugRepl"
+    },
+
+    // Side to side between active terminal splits
+    {
+        "when": "terminalFocus",
+        "key": "ctrl+h h",
+        "command": "workbench.action.terminal.focusPreviousPane"
+    },
+    {
+        "when": "terminalFocus",
+        "key": "ctrl+h l",
+        "command": "workbench.action.terminal.focusNextPane"
+    },
+]
