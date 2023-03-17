@@ -1,6 +1,7 @@
 {
+    "julia.additionalArgs": ["-t 10"],
     "julia.enableTelemetry": true,
-    "julia.executablePath": "julia",
+    //"julia.executablePath": "/Users/nathandaly/bin/julia",
     "files.exclude": {
         "**/.git/**.jl": true,
         "**/.julia*": true,
@@ -26,17 +27,53 @@
             "commands": [
                 ":w"
             ]
+        },
+        // TODO: ENABLE THIS ONLY WHEN LIVE SHARING
+        // TODO: New idea: set "u" to vscode's undo
+        {
+           "before": ["u"],
+           "commands": [
+               "undo"
+           ]
+        }
+        {
+           "before": ["<C-r>"],
+           "commands": [
+               "redo"
+           ]
         }
     ],
-    "window.zoomLevel": 0,
     "vim.textwidth": 92,
     "julia.enableCrashReporter": true,
     "files.trimTrailingWhitespace": true,
-    "workbench.activityBar.visible": true,
     "sync.autoDownload": true,
     "sync.autoUpload": true,
     "sync.gist": "431f46a1a8cbaf7fef9eeba33003a3f3",
     "sync.forceUpload": true,
     "terminal.integrated.scrollback": 100000,
+    "terminal.integrated.shellArgs.osx": "zsh",
+    "window.autoDetectHighContrast": false,
+    "terminal.integrated.commandsToSkipShell": [
+        "language-julia.interrupt"
+    ],
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.accessibilitySupport": "off",
+    "julia.symbolCacheDownload": true,
+    "files.insertFinalNewline": true,
+    "vim.commandLineModeKeyBindings": [
+
+
+
+
+    ],
+    "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace, 'Liberation Mono for Powerline'",
+    "githubPullRequests.terminalLinksHandler": "github",
+    "go.toolsManagement.autoUpdate": true,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "githubPullRequests.pullBranch": "never",
+    "redhat.telemetry.enabled": true,
+    "files.associations": {
+        "*.jl": "julia"
+    },
 }
 
