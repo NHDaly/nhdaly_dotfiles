@@ -155,7 +155,7 @@ set -g @plugin '/Users/Daly/src/tmux-better-mouse-mode'
 set -g @scroll-without-changing-pane 'on' # change from tmux v2.0.
 set -g @scroll-speed-num-lines-per-scroll 3 # change from tmux v2.0.
 set -g @emulate-scroll-for-no-mouse-alternate-buffer 'on' # change from tmux v2.0.
-set -g @scroll-down-exit-copy-mode 'on'
+set -g @scroll-down-exit-copy-mode 'off'
 set -g @scroll-in-moused-over-pane 'off'
 set -g @scroll-without-changing-pane 'off'
 
