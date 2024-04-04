@@ -95,6 +95,8 @@ POWERLINE_HOME_CURRENT_PATH="true"
 # Make sure you do all theme customization before sourcing the theme.
 antigen theme ~/dotfiles/nhdaly/custom-zsh/themes powerline --no-local-clone
 
+setopt prompt_subst
+
 # ======= ZSH ======================================================
 
 # You may need to manually set your language environment
