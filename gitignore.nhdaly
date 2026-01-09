@@ -14,3 +14,12 @@ Session.vim
 # Claude
 .claude
 .devloop
+
+raiconfig.toml
+
+# Python
+.venv
+
+
+# MCPRepl security configuration (contains API keys)
+.mcprepl/
