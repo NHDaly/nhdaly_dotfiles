@@ -20,6 +20,8 @@ Plugin 'VundleVim/Vundle.vim'
 " }}}
 " ------- Put Vundle Plugins Here --------------------
 
+Plugin 'github/copilot.vim'
+
 if exists("g:running_at_work")
   " Skip these, because I already have them in my work vimrc.
 else

@@ -1,12 +1,14 @@
 {
-    "julia.additionalArgs": ["-t 10"],
+    "julia.additionalArgs": [
+        "-t 8,4"
+    ],
     "julia.enableTelemetry": true,
-    //"julia.executablePath": "/Users/nathandaly/bin/julia",
     "files.exclude": {
         "**/.git/**.jl": true,
         "**/.julia*": true,
+        "**/*.dSYM": true,
         },
-    "vscode-neovim.neovimPath": "nvim",
+    //"vscode-neovim.neovimPath": "nvim",
     "editor.scrollBeyondLastLine": false,
     "editor.rulers": [
         92
@@ -28,28 +30,28 @@
                 ":w"
             ]
         },
-        // TODO: ENABLE THIS ONLY WHEN LIVE SHARING
-        // TODO: New idea: set "u" to vscode's undo
         {
            "before": ["u"],
            "commands": [
                "undo"
            ]
-        }
+        },
         {
            "before": ["<C-r>"],
            "commands": [
                "redo"
+           ]
+        },
+        {
+           "before": ["g","f"],
+           "commands": [
+               "editor.action.openLink"
            ]
         }
     ],
     "vim.textwidth": 92,
     "julia.enableCrashReporter": true,
     "files.trimTrailingWhitespace": true,
-    "sync.autoDownload": true,
-    "sync.autoUpload": true,
-    "sync.gist": "431f46a1a8cbaf7fef9eeba33003a3f3",
-    "sync.forceUpload": true,
     "terminal.integrated.scrollback": 100000,
     "terminal.integrated.shellArgs.osx": "zsh",
     "window.autoDetectHighContrast": false,
@@ -75,5 +77,34 @@
     "files.associations": {
         "*.jl": "julia"
     },
+    "julia.executablePath": "julia",
+    "editor.inlineSuggest.enabled": true,
+    "git.autofetch": true,
+    "explorer.confirmDragAndDrop": false,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
+    "git.openRepositoryInParentFolders": "never",
+    "zig.path": "",
+    "zig.zls.path": "/Users/nathandaly/Library/Application Support/Code/User/globalStorage/ziglang.vscode-zig/zls_install/zls",
+    "zig.initialSetupDone": true,
+    "jupyter.askForKernelRestart": false,
+    "github.copilot.editor.enableAutoCompletions": true,
+    "jupyter.interactiveWindow.creationMode": "perFile",
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
+    "[dockercompose]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.autoIndent": "advanced",
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "[github-actions-workflow]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "claudeCode.preferredLocation": "panel",
 }
 
