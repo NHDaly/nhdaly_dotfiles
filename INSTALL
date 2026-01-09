@@ -10,7 +10,7 @@ ln -s ~/dotfiles/nhdaly/vim ~/.vim && \
 ln -s ~/dotfiles/nhdaly/tmux.conf.nhdaly ~/.tmux.conf && \
 ln -s ~/dotfiles/nhdaly/gitignore.nhdaly ~/.gitignore && \
 ln -s ~/dotfiles/nhdaly/atom ~/.atom && \
-ln -s ~/dotfiles/nhdaly/vscode "$HOME/Library/Application Support/Code/User" && \
+#ln -s ~/dotfiles/nhdaly/vscode "$HOME/Library/Application Support/Code/User" && \
 ln -s ~/dotfiles/nhdaly/juliarc.nhdaly.jl ~/.juliarc.jl && \
 mkdir -p ~/.julia/config/ && \
 ln -s ~/dotfiles/nhdaly/juliarc.nhdaly.jl ~/.julia/config/startup.jl && \

@@ -1,3 +1,7 @@
+# zmodload zsh/zprof
+
+
+
 # This file uses Antigen as its main zsh package manager.
 # See https://github.com/zsh-users/antigen
 source ~/bin/antigen/antigen.zsh
@@ -47,36 +51,19 @@ antigen bundle hchbaw/opp.zsh
 # Load all antigen bundles before this line.
 antigen apply
 
-# ==== vi-mode settings ====
-bindkey "" history-incremental-search-backward
-bindkey -M vicmd "s" vi-cmd-mode # Turn off subsitute (make it a noop).
-bindkey "[3~" vi-delete-char # fn-delete should delete forward.
-
-# Unbind the escape-/ binding because it gets triggered when I try to do a history search with "/".
-bindkey -r "/"
-# ==== end vi-mode settings ====
-
-# ==== zsh-history-substring-search settings ====
-# Add nice, fancy, julia-style history search on up/down arrow that
-# searches based on currently typed prefix in prompt
-bindkey '^[OA' history-substring-search-up
-bindkey '^[OB' history-substring-search-down
-HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
-HISTORY_SUBSTRING_SEARCH_GLOBBING_FLAGS="I"
-# ==== end vi-mode settings ====
 
 
-export MANPATH="/usr/local/man:$MANPATH"
+# export MANPATH="/usr/local/man:$MANPATH"
 
-# ------- ZSH Customizations ----------------------------
+# # ------- ZSH Customizations ----------------------------
 
-# Update the theme command line right before executing line, to update the
-# timestamp to when the command was started.
-function _reset-prompt-and-accept-line {
-  zle reset-prompt
-  zle .accept-line
-}
-zle -N accept-line _reset-prompt-and-accept-line
+# # Update the theme command line right before executing line, to update the
+# # timestamp to when the command was started.
+# function _reset-prompt-and-accept-line {
+#   zle reset-prompt
+#   zle .accept-line
+# }
+# zle -N accept-line _reset-prompt-and-accept-line
 
 # ======= THEME ======================================================
 
@@ -95,6 +82,7 @@ POWERLINE_HOME_CURRENT_PATH="true"
 # Make sure you do all theme customization before sourcing the theme.
 antigen theme ~/dotfiles/nhdaly/custom-zsh/themes powerline --no-local-clone
 
+# Enable prompt substitution so that $(git_prompt_info) etc. are evaluated
 setopt prompt_subst
 
 # ======= ZSH ======================================================
@@ -105,6 +93,29 @@ setopt prompt_subst
 # Vi mode
 # Use vim-style key-bindings for the zsh commandline prompt!
 bindkey -v
+
+# Custom keybindings (must come AFTER bindkey -v to not be overwritten)
+bindkey "^R" history-incremental-search-backward
+bindkey "^S" history-incremental-search-forward
+bindkey "[3~" vi-delete-char # fn-delete should delete forward.
+
+# ==== vi-mode settings ====
+bindkey -M vicmd "s" vi-cmd-mode # Turn off subsitute (make it a noop).
+# Unbind the escape-/ binding because it gets triggered when I try to do a history search with "/".
+bindkey -r "/"
+# ==== end vi-mode settings ====
+
+## ==== zsh-history-substring-search settings ====
+## Add nice, fancy, julia-style history search on up/down arrow that
+## searches based on currently typed prefix in prompt
+#bindkey -M vicmd '\eOA' history-substring-search-up
+#bindkey -M vicmd '\eOB' history-substring-search-down
+#bindkey -M vicmd '^[[A' history-substring-search-up
+#bindkey -M vicmd '^[[B' history-substring-search-down
+#HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
+#HISTORY_SUBSTRING_SEARCH_GLOBBING_FLAGS="I"
+## ==== end zsh-search-mode settings ====
+
 
 export EDITOR='vim'
 
@@ -151,7 +162,7 @@ alias cdf="~/dotfiles/nhdaly/scripts/cdiffer_sxs.sh"
 # write-through history
 setopt incappendhistory
 unsetopt sharehistory
-#export HISTFILE=~/tmp_history_file.history
+export HISTFILE=~/.zsh_history
 # Save all the data!
 export HISTSIZE=2147483648  # 2^31 lines (note each entry might be like 100 bytes)
 export SAVEHIST=2147483648
@@ -176,4 +187,19 @@ fi
 # added by travis gem
 [ -f /Users/daly/.travis/travis.sh ] && source /Users/daly/.travis/travis.sh
 
+
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/Users/nathandaly/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<
+
+. "$HOME/.cargo/env"
+
+
+# zprof
 

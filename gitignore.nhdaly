@@ -10,3 +10,7 @@ Session.vim
 
 # Julia DEPOT dir
 .julia*
+
+# Claude
+.claude
+.devloop
