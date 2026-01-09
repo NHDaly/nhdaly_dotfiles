@@ -1,7 +1,7 @@
 # FreeAgent puts the powerline style in zsh !
 
 if [ "$POWERLINE_NIX" = "" ]; then
-  POWERLINE_NIX='$(echo "$PATH" | grep /nix > /dev/null && echo "(nix)" || echo "")'
+  POWERLINE_NIX='$(echo "$PATH" | grep /nix/store > /dev/null && echo "(nix)" || echo "")'
 fi
 
 if [ "$POWERLINE_DATE_FORMAT" = "" ]; then
