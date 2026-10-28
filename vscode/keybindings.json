@@ -1,34 +1,85 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
-    // Up and down, between the editors and the terminal
-    {
-        "key": "ctrl+h j",
-        "command": "workbench.action.terminal.focus"
-    },
+    // Navigate between VSCode panes, and panels, like in tmux:
     {
         "key": "ctrl+h k",
-        "command": "workbench.action.focusActiveEditorGroup"
+        "command": "workbench.action.navigateUp"
     },
-
-    // Side to side between the active editors
     {
-        "key": "ctrl+h",
-        "command": "extension.vim_ctrl+w",
-        "when": "editorTextFocus && vim.active && vim.use<C-w> && !inDebugRepl"
+        "key": "ctrl+h j",
+        "command": "workbench.action.navigateDown"
     },
-
-    // Side to side between active terminal splits
     {
-        "when": "terminalFocus",
         "key": "ctrl+h h",
-        "command": "workbench.action.terminal.focusPreviousPane"
+        "command": "workbench.action.navigateLeft"
     },
     {
-        "when": "terminalFocus",
+        "key": "ctrl+h l",
+        "command": "workbench.action.navigateRight"
+    },
+    {
+        "when": "panelFocus",
         "key": "ctrl+h l",
         "command": "workbench.action.terminal.focusNextPane"
     },
     {
+        "when": "panelFocus",
+        "key": "ctrl+h h",
+        "command": "workbench.action.terminal.focusPreviousPane"
+    },
+    // // Use vim-mode to move windows from the editor
+    // {
+    //     "key": "ctrl+h",
+    //     "command": "extension.vim_ctrl+w",
+    //     "when": "editorTextFocus && vim.active && vim.use<C-w> && !inDebugRepl"
+    // },
+
+    // // Up and down, between the editors and the terminal
+    // {
+    //     "when": "terminalFocus",
+    //     "key": "ctrl+h j",
+    //     "command": "runCommands",
+    //     "args": {
+    //         "commands": [
+    //             // "workbench.action.focusBelowGroup",
+    //             // "workbench.action.focusPanel"
+    //             "workbench.action.navigateDown"
+    //         ]
+    //     }
+    // },
+    // {
+    //     "when": "terminalFocus",
+    //     "key": "ctrl+h k",
+    //     "command": "runCommands",
+    //     "args": {
+    //         "commands": [
+    //             "workbench.action.navigateUp"
+    //             // "workbench.action.focusAboveGroup"
+    //         ]
+    //     }
+    // },
+
+
+    // // Side to side between active terminal splits, and to the editor
+    // {
+    //     "when": "terminalFocus",
+    //     "key": "ctrl+h h",
+    //     "command": "runCommands",
+    //     "args": {
+    //         "commands": [
+    //             // "workbench.action.terminal.focusPreviousPane",
+    //             // "workbench.action.focusLeftGroup"
+    //             "workbench.action.navigateLeft"
+    //         ]
+    //     }
+    // },
+    // {
+    //     "when": "terminalFocus",
+    //     "key": "ctrl+h l",
+    //     "command": "workbench.action.terminal.focusNextPane"
+    // },
+    {
+
         "key": "ctrl+alt+enter",
         "command": "github.copilot.generate",
         "when": "editorTextFocus && github.copilot.activated && !inInteractiveInput && !interactiveEditorFocused"
