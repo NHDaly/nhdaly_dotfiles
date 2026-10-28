@@ -27,57 +27,7 @@
         "key": "ctrl+h h",
         "command": "workbench.action.terminal.focusPreviousPane"
     },
-    // // Use vim-mode to move windows from the editor
-    // {
-    //     "key": "ctrl+h",
-    //     "command": "extension.vim_ctrl+w",
-    //     "when": "editorTextFocus && vim.active && vim.use<C-w> && !inDebugRepl"
-    // },
-
-    // // Up and down, between the editors and the terminal
-    // {
-    //     "when": "terminalFocus",
-    //     "key": "ctrl+h j",
-    //     "command": "runCommands",
-    //     "args": {
-    //         "commands": [
-    //             // "workbench.action.focusBelowGroup",
-    //             // "workbench.action.focusPanel"
-    //             "workbench.action.navigateDown"
-    //         ]
-    //     }
-    // },
-    // {
-    //     "when": "terminalFocus",
-    //     "key": "ctrl+h k",
-    //     "command": "runCommands",
-    //     "args": {
-    //         "commands": [
-    //             "workbench.action.navigateUp"
-    //             // "workbench.action.focusAboveGroup"
-    //         ]
-    //     }
-    // },
-
-
-    // // Side to side between active terminal splits, and to the editor
-    // {
-    //     "when": "terminalFocus",
-    //     "key": "ctrl+h h",
-    //     "command": "runCommands",
-    //     "args": {
-    //         "commands": [
-    //             // "workbench.action.terminal.focusPreviousPane",
-    //             // "workbench.action.focusLeftGroup"
-    //             "workbench.action.navigateLeft"
-    //         ]
-    //     }
-    // },
-    // {
-    //     "when": "terminalFocus",
-    //     "key": "ctrl+h l",
-    //     "command": "workbench.action.terminal.focusNextPane"
-    // },
+    // -----------
     {
 
         "key": "ctrl+alt+enter",
